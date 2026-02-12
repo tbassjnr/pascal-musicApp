@@ -1,0 +1,44 @@
+/* music.component.css */
+.music-page {
+  min-height: 100vh;
+}
+
+.featured-album {
+  background: linear-gradient(135deg, #121212 0%, #2c3e50 100%);
+}
+
+.album-list-item {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid transparent !important;
+}
+
+.album-list-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+  border-color: #e9ecef !important;
+}
+
+.track-row {
+  border-bottom: 1px solid #f8f9fa;
+  cursor: pointer;
+}
+
+.track-row:hover {
+  background-color: #f8f9fa;
+}
+
+.track-row:last-child {
+  border-bottom: none;
+}
+
+/* music.component.css */
+
+/* Platform Icons */
+.platform-link {
+  transition: transform 0.2s ease;
+  min-width: 100px;
+}
+.platform-link:hover {
+  transform: scale(1.1);
+}
+

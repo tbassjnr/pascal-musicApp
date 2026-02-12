@@ -1,0 +1,110 @@
+<div class="contact-page py-4">
+  <div class="container">
+    <!-- Header Section -->
+    <div class="text-center mb-5">
+      <h1 class="display-4 fw-bold mb-3">Get In Touch</h1>
+      <p class="text-muted mx-auto" style="max-width: 600px;">
+        I'd love to hear from you. Whether you're a fan, venue owner, or fellow musi5ian, don't hesitate to reach out.
+      </p>
+    </div>
+
+    <div class="row g-5">
+      <!-- Left: Send a Message Form -->
+      <div class="col-lg-7">
+        <div class="contact-card p-4 h-100">
+          <h3 class="mb-4 fw-semibold">Send a Message</h3>
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label small text-muted">Name</label>
+                <input type="text" formControlName="name" class="form-control" [class.is-invalid]="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small text-muted">Email</label>
+                <input type="email" formControlName="email" class="form-control" [class.is-invalid]="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small text-muted">Subject</label>
+              <input type="text" formControlName="subject" class="form-control" [class.is-invalid]="contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small text-muted">Message</label>
+              <textarea formControlName="message" class="form-control" rows="8" placeholder="Tell me what's on your mind..." [class.is-invalid]="contactForm.get('message')?.touched && contactForm.get('message')?.invalid"></textarea>
+              <div class="text-end small text-muted mt-1">
+                {{ currentLength }}/{{ maxLength }} Characters
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-submit w-100 py-2 fw-bold text-white">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right: Info & Socials -->
+      <div class="col-lg-5">
+        <h3 class="mb-4 fw-semibold">Contact Information</h3>
+        
+        <!-- Info Cards -->
+        <div class="info-card mb-3 p-3 bg-white d-flex align-items-center rounded-4 shadow-sm">
+          <div class="icon-box bg-success-subtle text-success me-3">
+            <i class="bi bi-envelope"></i>
+          </div>
+          <div>
+            <div class="small text-muted">Email</div>
+            <div class="fw-bold text-success">hello@artistname.com</div>
+            <div class="smaller text-muted">For general inquiries and fan mail</div>
+          </div>
+        </div>
+
+        <div class="info-card mb-3 p-3 bg-white d-flex align-items-center rounded-4 shadow-sm">
+          <div class="icon-box bg-success-subtle text-success me-3">
+            <i class="bi bi-telephone"></i>
+          </div>
+          <div>
+            <div class="small text-muted">Management</div>
+            <div class="fw-bold text-success">+1 (555) 123-4567</div>
+            <div class="smaller text-muted">Booking and business inquiries</div>
+          </div>
+        </div>
+
+        <div class="info-card mb-4 p-3 bg-white d-flex align-items-center rounded-4 shadow-sm">
+          <div class="icon-box bg-success-subtle text-success me-3">
+            <i class="bi bi-geo-alt"></i>
+          </div>
+          <div>
+            <div class="small text-muted">Location</div>
+            <div class="fw-bold text-success">Los Angeles, CA</div>
+            <div class="smaller text-muted">Based in the heart of the music scene</div>
+          </div>
+        </div>
+
+        <!-- Social Buttons -->
+        <h3 class="mb-3 fw-semibold">Follow Me</h3>
+        <div class="row g-2">
+          <div class="col-6"><a href="#" class="btn btn-social btn-spotify w-100"><i class="bi bi-spotify me-2"></i>Spotify</a></div>
+          <div class="col-6"><a href="#" class="btn btn-social btn-youtube w-100"><i class="bi bi-youtube me-2"></i>Youtube</a></div>
+          <div class="col-6"><a href="#" class="btn btn-social btn-instagram w-100"><i class="bi bi-instagram me-2"></i>Instagram</a></div>
+          <div class="col-6"><a href="#" class="btn btn-social btn-twitter w-100"><i class="bi bi-twitter-x me-2"></i>Twitter</a></div>
+          <div class="col-6"><a href="#" class="btn btn-social btn-tiktok w-100"><i class="bi bi-tiktok me-2"></i>Tiktok</a></div>
+          <div class="col-6"><a href="#" class="btn btn-social btn-facebook w-100"><i class="bi bi-facebook me-2"></i>Facebook</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FAQ Section -->
+    <div class="my-5 pt-5">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Frequently Asked Questions</h2>
+        <p class="text-muted">Quick answers to common questions</p>
+      </div>
+      <div class="faq-container mx-auto" style="max-width: 65%;">
+        <div *ngFor="let faq of faqs" class="faq-card mb-3 p-4 bg-white rounded-4 shadow-sm">
+          <h5 class="fw-bold">{{ faq.question }}</h5>
+          <p class="text-muted mb-0">{{ faq.answer }}</p>
+        </div>
+      </div>
+    </div>

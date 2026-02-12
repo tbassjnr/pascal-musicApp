@@ -1,0 +1,66 @@
+<div class="home-container">
+  <section class="hero text-white d-flex align-items-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/home.png') center/cover; height: 80vh;">
+    <div class="container">
+      <div class="col-lg-6">
+        <h1 class="display-3 fw-bold">Music That <span class="text-success">Move Souls</span></h1>
+        <p class="lead mb-4">Experience the journey through sound, emotion, and rhythm. New album "Echoes of Tomorrow" available now.</p>
+        <div class="d-flex gap-3">
+          <button class="btn btn-success rounded-pill px-4 py-2" routerLink="/music">Listen Now</button>
+          <button class="btn btn-outline-light rounded-pill px-4 py-2" routerLink="/tour">View Tour Dates</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5 mt-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Latest Released</h2>
+      <p class="text-muted small">New single from the upcoming album</p>
+    </div>
+    <div class="row align-items-center bg-white p-4 rounded-4 shadow-sm border">
+      <div class="col-md-5">
+        <img src="assets/images/home.png" class="img-fluid rounded-4 shadow" alt="Album Art">
+      </div>
+      <div class="col-md-7 ps-md-5">
+        <h3 class="fw-bold mt-3">New Song Title</h3>
+        <p class="text-muted">A haunting melody that captures the essence of late-night contemplation. This track explores themes of love, loss, and hope through intricate guitar work and heartfelt lyrics.</p>
+        <div class="d-flex flex-wrap gap-2 mt-4">
+          <a href="https://open.spotify.com/artist/0vBDtQ8ZWHFgmzfQZMm2rd?si=Yk-AWNlgSQKI_29Qq8i10w" target="_blank" class="btn btn-success rounded-pill px-3 shadow-sm"><i class="bi bi-spotify me-2"></i>Spotify</a>
+          <a href="#" target="_blank" class="btn btn-dark rounded-pill px-3 shadow-sm" style="background: #1c1c1e;"><i class="bi bi-apple me-2"></i>Apple Music</a>
+          <a href="https://www.youtube.com/@pascalkoomson" target="_blank" class="btn btn-danger rounded-pill px-3 shadow-sm"><i class="bi bi-youtube me-2"></i>Youtube</a>
+        </div>
+        <a routerLink="/music" class="d-block mt-3 text-decoration-none text-muted small">View All Music <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5 text-center">
+    <h2 class="fw-bold">Upcoming Shows</h2>
+    <p class="text-muted mb-5">Don't miss these live performances</p>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let show of tourDates">
+        <div class="card border p-3 text-start shadow-sm h-100">
+          <h5 class="fw-bold text-primary">{{show.date}}</h5>
+          <h6 class="mb-1">{{show.venue}}</h6>
+          <p class="text-muted small mb-4"><i class="bi bi-geo-alt me-1"></i>{{show.location}}</p>
+          <div class="d-flex justify-content-between align-items-end mt-auto">
+            <span [class]="show.status === 'Available' ? 'badge bg-success-subtle text-success' : 'badge bg-danger-subtle text-danger'">{{show.status}}</span>
+            <a href="#" class="text-decoration-none text-dark small fw-bold">Get Ticket <i class="bi bi-arrow-right ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-success mt-5 rounded-pill px-5 opacity-75" routerLink="/tour">View All Tour Dates</button>
+  </section>
+
+  <section class="py-5 mt-5 text-white" style="background-color: #557c55;">
+    <div class="container text-center py-4">
+      <h3 class="fw-bold">Stay Connected</h3>
+      <p class="mb-4">Get the latest updates on new releases, tour dates, and exclusive content</p>
+      <div class="input-group mx-auto mb-3" style="max-width: 500px;">
+        <input type="email" class="form-control rounded-pill-start border-0 px-4" placeholder="Enter your email..." [(ngModel)]="email">
+        <button class="btn btn-dark rounded-pill-end px-4" style="background-color: #3e5a3e;" (click)="subscribe()">Subscribe</button>
+      </div>
+    </div>
+  </section>
+</div>
