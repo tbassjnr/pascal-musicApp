@@ -1,1 +1,134 @@
-<p>video works!</p>
+<div class="video-page-container">
+  <!-- Header Section -->
+  <header class="text-center py-5">
+    <h1 class="display-4 fw-bold">Music Videos</h1>
+    <p class="text-muted mx-auto" style="max-width: 600px;">
+      Visual stories that bring my music to life. From official music videos to behind-the-scenes content and live performances.
+    </p>
+  </header>
+
+      <!-- Featured Video Section -->
+    <section class="container mb-5" *ngIf="featuredVideo">
+      <div class="text-center mb-4">
+        <h3 class="fw-semibold">Featured Video</h3>
+        <p class="text-muted">Latest release</p>
+      </div>
+
+      <div class="featured-card mx-auto position-relative rounded-4 overflow-hidden shadow-lg">
+        <div class="ratio ratio-16x9 rounded-top overflow-hidden">
+          <img
+            [src]="getThumbnail(featuredVideo)"
+            class="img-fluid object-fit-cover w-100"
+            alt="Featured Thumbnail">
+          <!-- Play Button Overlay -->
+          <div class="d-flex align-items-center justify-content-center position-absolute w-100 h-100 top-0 start-0">
+            <button 
+                class="btn rounded-circle shadow-lg d-flex align-items-center justify-content-center text-success"
+                style="width: 80px; height: 80px; border: none;  background: #517a54; transition: transform 0.2s;"
+                (click)="playFeaturedVideo(featuredVideo)"
+                (mouseenter)="hover=true" (mouseleave)="hover=false">
+                <i class="bi bi-play-fill fs-2 text-white"></i>
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center my-4 px-3">
+        <h2 class="fw-bold">{{featuredVideo.title}}</h2>
+      </div>
+
+      <!-- Video Modal -->
+      <div *ngIf="showPlayer"
+          class="modal fade show d-block"
+          tabindex="-1"
+          style="background: rgba(0,0,0,0.7);">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content bg-dark border-0 shadow-lg rounded-4">
+            <div class="modal-header border-0">
+              <h5 class="modal-title text-white">{{currentVideo?.title}}</h5>
+              <button type="button" class="btn-close btn-close-white" (click)="closePlayer()"></button>
+            </div>
+            <div class="modal-body p-0">
+              <div class="ratio ratio-16x9">
+                <iframe [src]="selectedVideoUrl" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+
+<!-- Filter & Grid Section -->
+  <section class="container py-5">
+    <!-- Category Filter -->
+    <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+      <button *ngFor="let cat of categories" 
+              (click)="filterByCategory(cat)"
+              [class]="activeCategory === cat ? 'btn btn-success-custom' : 'btn btn-outline-secondary btn-filter'">
+        {{cat}}
+      </button>
+    </div>
+
+    <!-- Video Grid -->
+    <div class="row g-4">
+  <div class="col-12 col-md-6 col-lg-4" *ngFor="let video of filteredVideos">
+    <div class="card h-100 border-0 shadow-sm video-card">
+      <div class="position-relative">
+        <div class="ratio ratio-16x9 bg-light rounded-top">
+          <img
+            [src]="getThumbnail(video)"
+            class="img-fluid object-fit-cover w-100"
+            alt="Video Thumbnail">
+        </div>
+        <span class="badge category-label m-2 position-absolute top-0 start-0">{{video.category}}</span>
+        <span class="badge duration-badge-sm m-2 position-absolute top-0 end-0">{{video.duration}}</span>
+      </div>
+      <div class="card-body">
+        <h6 class="fw-bold mb-1">{{video.title}}</h6>
+        <p class="small text-muted mb-3">{{video.views}} Views</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <button (click)="onWatchNow(video)" class="btn btn-link text-success p-0 fw-bold text-decoration-none">Watch Now</button>
+          <div class="d-flex gap-2">
+            <button 
+              (click)="onLike(video)" 
+              class="btn btn-sm btn-light border-success rounded-circle">
+              
+              <i class="bi"
+                [ngClass]="video.liked ? 'bi-heart-fill text-success border-white' : 'bi-heart text-muted'">
+              </i>
+
+            </button>
+
+            <button (click)="onShare(video)" class="btn btn-sm btn-light border rounded-circle"><i class="bi bi-share"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- CTA Section -->
+  <section class="cta-section py-5 text-center text-white my-4">
+    <div class="container">
+      <h2 class="fw-bold">Never Miss a Video</h2>
+      <p class="opacity-75 mb-4">Subscribe to my YouTube channel for the latest music videos, live performances, and exclusive content</p>
+      <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+        <button 
+          class="btn btn-danger px-4 py-2 fw-bold d-flex align-items-center justify-content-center"
+          (click)="onSubscribeYoutube()">
+          <i class="bi bi-youtube me-2"></i> Subscribe to YouTube
+        </button>
+
+        <button 
+          class="btn btn-light px-4 py-2 fw-bold d-flex align-items-center justify-content-center"
+          (click)="onNotifications()">
+          <i class="bi bi-bell-fill me-2"></i> Get Notifications
+        </button>
+
+      </div>
+    </div>
+  </section>
+

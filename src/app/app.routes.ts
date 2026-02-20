@@ -6,6 +6,7 @@ import { Band } from './pages/band/band';
 import { Tour } from './pages/tour/tour';
 import { About } from './pages/about/about';
 import { Contact } from './pages/contact/contact';
+import { Protocol } from './pages/protocol/protocol';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'tour', component: Tour },
   { path: 'about', component: About },
   { path: 'contact', component: Contact },
+  { path: 'protocol', component: Protocol},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];

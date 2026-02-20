@@ -42,3 +42,52 @@
   transform: scale(1.1);
 }
 
+.track-row:hover {
+  background: rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Smooth hover effect */
+.track-row {
+  transition: all 0.3s ease;
+}
+
+.track-row:hover {
+  background-color: #f8f9fa;
+}
+
+/* Highlight currently playing track */
+.playing-track {
+  background: linear-gradient(90deg, #e6fff2, #ffffff);
+  border-left: 4px solid #198754;
+}
+
+/* Equalizer animation */
+.equalizer {
+  display: flex;
+  gap: 3px;
+  align-items: end;
+  height: 18px;
+}
+
+.equalizer span {
+  width: 4px;
+  height: 6px;
+  background: #198754;
+  border-radius: 2px;
+  animation: bounce 0.6s infinite ease-in-out;
+}
+
+.equalizer span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.equalizer span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 100% { height: 6px; }
+  50% { height: 18px; }
+}

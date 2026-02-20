@@ -1,1 +1,116 @@
-<p>about works!</p>
+<div class="about-page" style="background: linear-gradient(to bottom, #c8d3ff, #F0F3FF);">
+  <!-- Hero Section -->
+  <section class="container py-5">
+    <div class="row align-items-center g-5 my-2">
+      <div class="col-lg-6">
+        <h1 class="display-3 fw-bold mb-4">About Me</h1>
+        <p class="lead text-muted mb-4">
+          I'm a passionate musician dedicated to creating authentic connections through music. 
+          My journey began in small coffee shops and has evolved into performing on stages 
+          around the world, always staying true to the emotional core that drives my artistry.
+        </p>
+        <div class="d-flex gap-3">
+          <button (click)="downloadPressKit()" class="btn btn-success-custom px-4 py-2">Download Press Kit</button>
+          <button (click)="contactManagement()" class="btn btn-outline-secondary rounded-pill px-4">Contact Management</button>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <img src="assets/images/pascal1.jpg" alt="Kelvin TheBra" class="img-fluid rounded-4 shadow-sm object-fit-cover" style="height: 570px; width: 500px;">
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Stats Section -->
+  <section class="container py-5">
+    <div class="row text-center g-4">
+      <div *ngFor="let stat of stats" class="col-6 col-md-3">
+        <div class="display-4 fw-bold text-primary-custom">{{ stat.value }}</div>
+        <div class="text-muted small fw-bold text-uppercase">{{ stat.label }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Story Section -->
+  <section class="container py-5 text-center">
+    <h2 class="fw-bold mb-2">My Story</h2>
+    <p class="text-muted mb-5">The journey that shaped my music</p>
+    <div class="mx-auto text-muted" style="max-width: 800px; text-align: justify;">
+      <p>Music has been my constant companion since childhood. Growing up in a small town, I found solace in melodies and discovered that songs could express what words alone couldn't capture.</p>
+      <p>My early years were spent learning guitar in my bedroom, writing lyrics in school notebooks, and performing at local open mic nights. Those humble beginnings taught me the power of authentic storytelling and genuine connection with an audience, values that continue to guide my artistry today.</p>
+      <p>The transition from bedroom recordings to professional studios wasn't just about better equipment—it was about learning to translate raw emotion into polished art without losing the heart of the message.</p>
+      <p>Today, I'm grateful to share my music with audiences around the world... The journey continues, and I'm honored to have you along for the ride.</p>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center fw-bold mb-2">Career Timeline</h2>
+      <p class="text-center text-muted mb-5">Key milestones in my musical journey</p>
+      
+      <div class="timeline-container position-relative">
+        <div class="timeline-line"></div>
+        
+        <div *ngFor="let item of timeline" class="timeline-item d-flex mb-5 position-relative" 
+             [ngClass]="item.side === 'left' ? 'justify-content-start' : 'justify-content-end'">
+          
+          <div class="timeline-dot"></div>
+          
+          <div class="card timeline-card border-0 shadow-sm p-4" style="width: 45%;">
+            <div class="text-primary-custom fw-bold text-end mb-1">{{ item.year }}</div>
+            <h5 class="fw-bold mb-2 text-end">{{ item.title }}</h5>
+            <p class="small text-muted text-end mb-0">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Influences Section -->
+  <section class="container py-5 text-center">
+    <h2 class="fw-bold mb-2">Musical Influences</h2>
+    <p class="text-muted mb-5">Artists who shaped my sound</p>
+    <div class="row row-cols-2 row-cols-md-6 g-4">
+      <div *ngFor="let artist of influences" class="col">
+        <div class="influence-icon mx-auto mb-2">
+          <i class="bi bi-music-note-beamed"></i>
+        </div>
+        <div class="fw-bold small">{{ artist.name }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Kit Section -->
+  <section class="press-kit-section py-5 text-white text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-3">Press Kit</h2>
+      <p class="mb-5 opacity-75">Download high-resolution photos, biography, technical requirements, and press materials</p>
+      
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <div class="press-card p-4 h-100">
+            <i class="bi bi-image fs-1 mb-3"></i>
+            <h5>High-Res Photos</h5>
+            <p class="small opacity-75">Professional photography for media use</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="press-card p-4 h-100">
+            <i class="bi bi-file-earmark-person fs-1 mb-3"></i>
+            <h5>Biography & Facts</h5>
+            <p class="small opacity-75">Complete artist information and career highlights</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="press-card p-4 h-100">
+            <i class="bi bi-gear fs-1 mb-3"></i>
+            <h5>Tech Rider</h5>
+            <p class="small opacity-75">Technical requirements and stage specifications</p>
+          </div>
+        </div>
+      </div>
+      
+      <button class="btn btn-light rounded-pill px-5 fw-bold">Open Complete Press kit</button>
+    </div>
+  </section>

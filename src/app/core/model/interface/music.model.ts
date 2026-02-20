@@ -4,6 +4,7 @@ export interface Track {
   title: string;
   duration: string;
   previewUrl?: string;
+  liked?: boolean; // ✅ Add this
 }
 
 export interface Album {

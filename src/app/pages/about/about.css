@@ -1,0 +1,77 @@
+/* Color Palette */
+.text-primary-custom { color: #4466FF; }
+.btn-success-custom { 
+    background-color: #5b845d; 
+    border-color: #5b845d; 
+    color: white; 
+    border-radius: 8px;
+}
+
+/* Timeline Logic */
+.timeline-container {
+    padding: 2rem 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #dee2e6;
+    transform: translateX(-50%);
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: #5b845d;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    z-index: 2;
+}
+
+.timeline-card {
+    border-radius: 12px;
+}
+
+/* Musical Influences */
+.influence-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #e8f5e9;
+    color: #4caf50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* Press Kit Section */
+.press-kit-section {
+    background-color: #310085; /* Deep purple from image */
+}
+
+.press-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.press-card:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive adjustments for timeline */
+@media (max-width: 768px) {
+    .timeline-line { left: 20px; }
+    .timeline-dot { left: 20px; }
+    .timeline-item { justify-content: flex-start !important; padding-left: 45px; }
+    .timeline-card { width: 100% !important; }
+    .timeline-card * { text-align: left !important; }
+}

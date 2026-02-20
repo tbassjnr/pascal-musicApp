@@ -1,5 +1,5 @@
 .contact-page {
-  background-color: #f6f8ff; /* Matches the light background in image */
+  background: linear-gradient(to bottom, #c8d3ff, #F0F3FF);
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
 }

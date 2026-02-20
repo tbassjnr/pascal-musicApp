@@ -16,28 +16,41 @@ export class Contact {
 
   faqs = [
     {
-      question: 'How can I book you for a private event?',
-      answer: "Please use the contact form above with 'Booking Inquiry' as the subject. Include your event date, location, and details about the venue. My management team will respond within 48 hours."
-    },
-    {
-      question: 'Do you offer meet & greet packages?',
-      answer: 'Yes! VIP packages with meet & greet opportunities are available for most shows. Check the specific show details on the Tour page or contact my team for more information.'
-    },
+    question: 'How can I book you for a private event?',
+    answer: `To book me for a private event, please use the contact form and select 
+    "Booking Inquiry" as the subject. Include your event date, location, venue type, 
+    and any important details. My management team will review your request and 
+    respond within 24–48 hours with availability and next steps.`
+  },
 
-    {
-      question: 'How can I book you for a private event?',
-      answer: "Please use the contact form above with 'Booking Inquiry' as the subject. Include your event date, location, and details about the venue. My management team will respond within 48 hours."                                    
-    },
+  {
+    question: 'Do you offer meet & greet packages?',
+    answer: `Yes, meet & greet packages are available for most shows. These usually 
+    include early access, a photo opportunity, and a chance to connect briefly 
+    before or after the performance. Check the event details or contact us for 
+    specific availability.`
+  },
 
-    {
-      question: 'Do you offer meet & greet packages?',
-      answer: 'Yes! VIP packages with meet & greet opportunities are available for most shows. Check the specific show details on the Tour page or contact my team for more information.'                                      
-    },
-    
-    {
-      question: 'Do you offer meet & greet packages?',
-      answer: 'Yes! VIP packages with meet & greet opportunities are available for most shows. Check the specific show details on the Tour page or contact my team for more information.'                                      
-    }
+  {
+    question: 'Are you available for international events?',
+    answer: `Yes, international bookings are considered based on schedule and 
+    logistics. Please provide full event details when reaching out, and our team 
+    will discuss travel arrangements and performance requirements with you.`
+  },
+
+  {
+    question: 'Can I request specific songs for my event?',
+    answer: `Song requests can be discussed during the booking process. While the 
+    final setlist is carefully curated, we’re happy to consider special requests 
+    for private events and celebrations.`
+  },
+
+  {
+    question: 'How can I collaborate with you?',
+    answer: `For collaborations, please send a detailed proposal through the 
+    contact form including your idea, timeline, and any supporting material. 
+    Our team will review and respond if it’s a good fit.`
+  }
   ];
 
   constructor(private fb: FormBuilder) {}

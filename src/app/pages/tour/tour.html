@@ -1,1 +1,88 @@
-<p>tour works!</p>
+<div class="tour-page">
+  <!-- Hero Section -->
+  <section class="tour-hero d-flex align-items-center justify-content-center text-center text-white">
+    <div class="container py-5">
+      <h1 class="display-3 fw-bold">Live Tour</h1>
+      <p class="lead mb-4">Experience the music live. Join me on stage for unforgettable nights of<br> music, energy, and connection.</p>
+      <button class="btn btn-success-custom px-4 py-2">Get Ticket Now</button>
+    </div>
+  </section>
+
+  <!-- Upcoming Shows -->
+  <section class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Upcoming Shows</h2>
+      <p class="text-muted">Don't miss these live performances</p>
+    </div>
+
+    <div class="show-list mx-auto" style="max-width: 900px;">
+      <div *ngFor="let show of upcomingShows" class="card show-card mb-3 border-0 shadow-sm p-3">
+        <div class="row align-items-center">
+          <!-- Date -->
+          <div class="col-2 text-center border-end">
+            <h2 class="fw-bold mb-0 text-primary-custom">{{show.day}}</h2>
+            <div class="small fw-bold">{{show.month}}</div>
+          </div>
+          <!-- Details -->
+          <div class="col-5">
+            <h5 class="fw-bold mb-1">{{show.venue}}</h5>
+            <p class="small text-muted mb-0">{{show.location}}</p>
+          </div>
+          <!-- Status/Price -->
+          <div class="col-2">
+            <span class="badge mb-1" [ngClass]="{
+              'bg-success-subtle text-success': show.status === 'Available',
+              'bg-warning-subtle text-warning': show.status === 'Few Left',
+              'bg-danger-subtle text-danger': show.status === 'Sold Out'
+            }">{{show.status}}</span>
+            <div class="small text-muted">From ${{show.price}}</div>
+          </div>
+          <!-- Actions -->
+          <div class="col-3 text-end">
+            <button class="btn btn-sm btn-success-custom me-2" [disabled]="show.status === 'Sold Out'">Buy Ticket</button>
+            <button class="btn btn-sm btn-outline-secondary">More Info</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tour Map -->
+  <section class="container py-5">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Tour Map</h2>
+      <p class="text-muted">Follow the journey across the country</p>
+    </div>
+    <div id="map" class="rounded-4 shadow-sm" style="height: 450px; width: 100%;"></div>
+  </section>
+
+  <!-- Recent Shows -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Recent Shows</h2>
+        <p class="text-muted">Thank you to everyone who joined these amazing nights</p>
+      </div>
+      <div class="row g-4">
+        <div *ngFor="let show of recentShows" class="col-md-4">
+          <div class="card border-0 shadow-sm text-center p-4">
+            <div class="text-muted small mb-2">{{show.dateFull}}</div>
+            <h5 class="fw-bold">{{show.venue}}</h5>
+            <p class="small text-muted">{{show.location}}</p>
+            <span class="text-danger fw-bold small">Sold Out</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="container py-5 text-center">
+    <h3 class="fw-bold">Never Miss a Show</h3>
+    <p class="text-muted mb-4">Be the first to know about new tour dates, place tickets, and exclusive announcements</p>
+    <div class="input-group mx-auto" style="max-width: 500px;">
+      <input type="email" class="form-control rounded-start-pill ps-4" placeholder="Enter your email..." [(ngModel)]="email">
+      <button class="btn btn-success-custom rounded-end-pill px-4" (click)="subscribe()">Subscribe</button>
+    </div>
+  </section>
+</div>
