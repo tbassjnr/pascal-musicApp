@@ -1,0 +1,101 @@
+.protocol-page {
+  /* background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); */
+  min-height: 100vh;
+}
+
+.text-gold { color: #d4af37; }
+.ls-2 { letter-spacing: 2px; }
+
+.divider {
+  width: 80px;
+  height: 4px;
+  background: #d4af37;
+  border-radius: 2px;
+}
+
+/* Slick Focus Grid Effect */
+.protocol-grid:hover .protocol-card:not(:hover) {
+  filter: grayscale(1) brightness(0.5) blur(2px);
+  transform: scale(0.95);
+}
+
+.protocol-card {
+  position: relative;
+  height: 450px;
+  background: #1e293b;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.protocol-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  z-index: 10;
+}
+
+.img-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.img-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 10%, transparent 60%);
+}
+
+/* Animated Personnel Info */
+.person-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.4s ease;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.role-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  /* text-uppercase; */
+  background: #d4af37;
+  color: #000;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+.bio-text {
+  transition: opacity 0.3s ease, height 0.3s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+.protocol-card:hover .bio-text {
+  opacity: 0.8;
+  height: auto;
+}
+
+/* Social Buttons */
+.social-btn {
+  color: white;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.social-btn:hover {
+  color: #d4af37;
+}
+
+@media (max-width: 768px) {
+  .protocol-grid:hover .protocol-card:not(:hover) {
+    filter: none;
+    transform: none;
+  }
+}

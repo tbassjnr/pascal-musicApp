@@ -23,7 +23,7 @@
             </a>
             <ul class="dropdown-menu dropdown-animated">
             <li *ngFor="let child of link.children">
-              <a class="dropdown-item"
+              <a class="dropdown-item bg-transparent text-success"
                 [routerLink]="child.path"
                 routerLinkActive="text-success fw-bold"
                 [routerLinkActiveOptions]="{exact:true}">

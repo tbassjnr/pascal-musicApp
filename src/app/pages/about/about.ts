@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -15,6 +16,10 @@ export class About {
     { value: '50+', label: 'Live Shows' },
     { value: '15', label: 'Music Awards' }
   ];
+
+  constructor(
+    private router: Router
+  ){}
 
   timeline = [
     {
@@ -58,6 +63,6 @@ export class About {
 
   contactManagement() {
     console.log('Navigating to contact...');
-    // Logic to scroll to contact or navigate
+    this.router.navigate(['/protocol'])
   }
 }
