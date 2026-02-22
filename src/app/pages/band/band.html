@@ -1,1 +1,124 @@
-<p>band works!</p>
+<section class="band-section py-5 ">
+  <div class="container">
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <h6 class="text-success-custom fw-bold text-uppercase tracking-widest">The Crew</h6>
+      <h2 class="display-4 fw-bold text-black">{{ bandName }}</h2>
+      <div class="header-line mx-auto"></div>
+    </div>
+
+    <!-- Slick Carousel -->
+    <div id="bandCarousel" class="carousel slide carousel-fade shadow-lg rounded-5 overflow-hidden" data-bs-ride="carousel">
+      
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button *ngFor="let member of members; let i = index" 
+                type="button" 
+                data-bs-target="#bandCarousel" 
+                [attr.data-bs-slide-to]="i" 
+                [class.active]="i === 0" 
+                aria-current="true">
+        </button>
+      </div>
+
+      <div class="carousel-inner">
+        <div *ngFor="let member of members; let i = index" 
+             class="carousel-item" 
+             [class.active]="i === 0">
+          
+          <div class="row g-0 align-items-center bg-dark-glass">
+            <!-- Image Side -->
+            <div class="col-md-6">
+              <div class="member-img-container">
+                <img [src]="member.imageUrl" class="d-block w-100 member-img" [alt]="member.fullName">
+                <div class="img-overlay"></div>
+              </div>
+            </div>
+
+            <!-- Content Side -->
+            <div class="col-md-6 p-4 p-lg-5 text-white">
+              <span class="badge bg-success-custom mb-3">{{ member.role }}</span>
+              <h2 class="display-5 fw-bold mb-3">{{ member.fullName }}</h2>
+              <p class="lead opacity-75 mb-4">{{ member.description }}</p>
+              
+              <!-- Social Handles -->
+              <div class="d-flex gap-3">
+                <a *ngIf="member.socials.spotify" [href]="member.socials.spotify" class="social-icon">
+                  <i class="bi bi-spotify"></i>
+                </a>
+                <a *ngIf="member.socials.instagram" [href]="member.socials.instagram" class="social-icon">
+                  <i class="bi bi-instagram"></i>
+                </a>
+                <a *ngIf="member.socials.twitter" [href]="member.socials.twitter" class="social-icon">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+                <a *ngIf="member.socials.facebook" [href]="member.socials.facebook" class="social-icon">
+                  <i class="bi bi-facebook"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#bandCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon p-3 rounded-circle bg-dark" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#bandCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon p-3 rounded-circle bg-dark" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Band Article Section -->
+<section class="article-section py-5 bg-white">
+  <div class="container py-lg-4">
+    <div class="row align-items-center g-5">
+      
+      <!-- Text Content -->
+      <div class="col-lg-7">
+        <div class="ps-lg-4">
+          <h6 class="text-success-custom fw-bold text-uppercase mb-3">Our Journey</h6>
+          <h2 class="display-5 fw-bold mb-4 text-dark">{{ bandArticle.title }}</h2>
+          <p class="lead fw-semibold text-muted mb-4">{{ bandArticle.subtitle }}</p>
+          
+          <div class="article-body text-secondary">
+            <p *ngFor="let paragraph of bandArticle.content" class="mb-3">
+              {{ paragraph }}
+            </p>
+          </div>
+
+          <div class="mt-5 d-flex align-items-center gap-4">
+            <button class="btn btn-outline-dark px-4 py-2 rounded-pill">View Full Biography</button>
+            <div class="band-signature">
+              <span class="small text-muted d-block">Est. 2018</span>
+              <strong class="text-dark">The Visionaries</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Image with Decorative Elements -->
+      <div class="col-lg-5">
+        <div class="position-relative">
+          <!-- Decorative Frame -->
+          <div class="image-frame position-absolute"></div>
+          
+          <!-- Main Image -->
+          <div class="featured-img-wrapper shadow-lg">
+            <img [src]="bandArticle.featuredImageUrl" alt="Band in studio" class="img-fluid rounded-4">
+          </div>
+
+          <!-- Small Stat Overlay -->
+          <div class="stat-overlay bg-success-custom p-3 rounded-3 text-white shadow">
+            <div class="h4 fw-bold mb-0">150+</div>
+            <div class="small opacity-75">Global Venues</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</section>

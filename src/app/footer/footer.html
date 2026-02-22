@@ -20,7 +20,7 @@
           <li><a [routerLink]="'/tour'" class="text-decoration-none text-reset">Tour</a></li>
           <li><a [routerLink]="'/about'" class="text-decoration-none text-reset">About</a></li>
           <li><a [routerLink]="'/contact'" class="text-decoration-none text-reset">Contact</a></li>
-          <li><a [routerLink]="'#'" class="text-decoration-none text-reset">Press kit</a></li>
+          <li><a [routerLink]="'/protocol'" class="text-decoration-none text-reset">Protocol</a></li>
         </ul>
       </div>
       <div class="col-md-3 text-md-end">
@@ -34,5 +34,12 @@
     </div>
     <hr class="border-secondary my-4">
     <p class="text-center text-secondary small">© Copyright Pascal Koomson Ministry. All Rights Reserved</p>
+
+    <div *ngIf="showSignature"
+     class="position-fixed bottom-0 end-0 m-4 px-4 py-2 rounded-pill shadow 
+            bg-dark text-secondary small fw-normal 1h-lg"
+     [class.fade-out]="!showSignature">
+  Built with precision by tbassjnr🎸✨  
+</div>
   </div>
 </footer>
