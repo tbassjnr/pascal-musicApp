@@ -38,17 +38,36 @@
     <h2 class="fw-bold">Upcoming Shows</h2>
     <p class="text-muted mb-5">Don't miss these live performances</p>
     <div class="row g-4">
-      <div class="col-md-4" *ngFor="let show of tourDates">
-        <div class="card border p-3 text-start shadow-sm h-100">
-          <h5 class="fw-bold text-primary">{{show.date}}</h5>
-          <h6 class="mb-1">{{show.venue}}</h6>
-          <p class="text-muted small mb-4"><i class="bi bi-geo-alt me-1"></i>{{show.location}}</p>
-          <div class="d-flex justify-content-between align-items-end mt-auto">
-            <span [class]="show.status === 'Available' ? 'badge bg-success-subtle text-success' : 'badge bg-danger-subtle text-danger'">{{show.status}}</span>
-            <a href="#" class="text-decoration-none text-dark small fw-bold">Get Ticket <i class="bi bi-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-      </div>
+     <!-- ... inside the *ngFor loop ... -->
+
+<div class="col-md-4" *ngFor="let show of tourDates">
+  <div class="card border p-3 text-start shadow-sm h-100">
+    <!-- MODIFIED LINE BELOW: Combined month and day -->
+    <h5 class="fw-bold text-primary">{{show.month}} {{show.day}}</h5>
+    
+    <h6 class="mb-1">{{show.venue}}</h6>
+    <p class="text-muted small mb-4"><i class="bi bi-geo-alt me-1"></i>{{show.location}}</p>
+    
+    <div class="d-flex justify-content-between align-items-end mt-auto">
+      <span class="badge" [ngClass]="{
+  'bg-danger-subtle text-danger': show.status === 'Sold Out',
+  'bg-warning-subtle text-warning': show.status === 'Few Left',
+  'bg-success-subtle text-success': show.status === 'Available'
+}">
+  {{show.status}}
+</span>
+      <a href="#" 
+   class="text-decoration-none small fw-bold"
+   [ngClass]="show.status === 'Sold Out' ? 'text-muted opacity-50' : 'text-dark'"
+   [style.pointer-events]="show.status === 'Sold Out' ? 'none' : 'auto'"
+   [attr.aria-disabled]="show.status === 'Sold Out'">
+   Get Ticket <i class="bi bi-arrow-right ms-1"></i>
+</a>
+    </div>
+  </div>
+</div>
+
+<!-- ... rest of code ... -->
     </div>
     <button class="btn btn-success mt-5 rounded-pill px-5 opacity-75" routerLink="/tour">View All Tour Dates</button>
   </section>
