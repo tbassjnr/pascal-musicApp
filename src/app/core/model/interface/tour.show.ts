@@ -9,5 +9,7 @@ export interface TourShow {
   status: ShowStatus;
   price: number;
   isUpcoming: boolean;
-  dateFull: string; // Used for recent shows
+  dateFull: string;
+  lat?: number; // Added
+  lng?: number; // Added
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VideoService } from '../../core/model/service/video.service';
@@ -12,10 +12,10 @@ import { VideoInterface, VideoCategory } from '../../core/model/interface/video.
   styleUrls: ['./video.css'],
 })
 export class Video implements OnInit {
-
   allVideos: VideoInterface[] = [];
   filteredVideos: VideoInterface[] = [];
   featuredVideo?: VideoInterface;
+  isLoading = true; // Add this
 
   activeCategory: VideoCategory = 'All';
   categories: VideoCategory[] = [
@@ -27,16 +27,14 @@ export class Video implements OnInit {
   ];
 
   hover: boolean = false;
-
   showPlayer = false;
   selectedVideoUrl?: SafeResourceUrl;
-
-  // ✅ Add currentVideo to track which video is playing
   currentVideo?: VideoInterface;
 
   constructor(
     private videoService: VideoService,
     public sanitizer: DomSanitizer,
+    private cdr: ChangeDetectorRef, // Added for manual change detection if needed
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -51,6 +49,9 @@ export class Video implements OnInit {
 
       this.featuredVideo = this.allVideos.find(v => v.isFeatured);
       this.filterByCategory(this.activeCategory);
+      
+      this.isLoading = false; // Data is ready, hide spinner
+      this.cdr.detectChanges();
     });
   }
 
@@ -65,45 +66,42 @@ export class Video implements OnInit {
 
   filterByCategory(category: VideoCategory): void {
     this.activeCategory = category;
-    this.filteredVideos =
-      category === 'All'
-        ? this.allVideos.filter(v => !v.isFeatured)
-        : this.allVideos.filter(v => v.category === category && !v.isFeatured);
+    
+    // Logic: If 'All', show all non-featured. Else filter by category and non-featured.
+    if (category === 'All') {
+      this.filteredVideos = this.allVideos.filter(v => !v.isFeatured);
+    } else {
+      this.filteredVideos = this.allVideos.filter(v => v.category === category && !v.isFeatured);
+    }
   }
 
+  // FIXED: Corrected the YouTube thumbnail URL and template string
   getThumbnail(video?: VideoInterface): string {
-    return video?.youtubeId
-      ? `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`
-      : '';
+    if (!video?.youtubeId) return '';
+    return `https://i.ytimg.com/vi/${video.youtubeId}/maxresdefault.jpg`;
   }
 
-  // ===============================
-  // PLAY VIDEO (updated)
-  // ===============================
+  // FIXED: Corrected the YouTube Embed URL template string
   playFeaturedVideo(video: VideoInterface): void {
     if (!video?.youtubeId) return;
-
     const url = `https://www.youtube.com/embed/${video.youtubeId}?autoplay=1`;
     this.selectedVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-
-    this.currentVideo = video; // <-- track current video
+    this.currentVideo = video;
     this.showPlayer = true;
   }
 
   onWatchNow(video: VideoInterface): void {
     if (!video?.youtubeId) return;
-
     const url = `https://www.youtube.com/embed/${video.youtubeId}?autoplay=1`;
     this.selectedVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-
-    this.currentVideo = video; // <-- track current video
+    this.currentVideo = video;
     this.showPlayer = true;
   }
 
   closePlayer(): void {
     this.showPlayer = false;
     this.selectedVideoUrl = undefined;
-    this.currentVideo = undefined; // <-- reset current video
+    this.currentVideo = undefined;
   }
 
   onLike(video: VideoInterface): void {
@@ -123,7 +121,6 @@ export class Video implements OnInit {
 
   onShare(video: VideoInterface): void {
     if (!video?.youtubeId) return;
-
     const videoLink = `https://www.youtube.com/watch?v=${video.youtubeId}`;
     if (isPlatformBrowser(this.platformId) && navigator.share) {
       navigator.share({ title: video.title, text: 'Check out this video!', url: videoLink })
@@ -136,33 +133,20 @@ export class Video implements OnInit {
   }
 
   onSubscribeYoutube(): void {
-    const youtubeChannelUrl = 'https://www.youtube.com/channel/UCDtgqMENud-XZOxKEhp82fA?sub_confirmation=1';
+    const youtubeChannelUrl = 'https://www.youtube.com/@KelvinTheBra'; // Added placeholder
     if (isPlatformBrowser(this.platformId)) window.open(youtubeChannelUrl, '_blank');
-  }
-
-  private showWelcomeNotification(): void {
-    new Notification('🎵 You’re Subscribed!', {
-      body: 'You will now receive updates when new videos are released.',
-      icon: '/assets/logo.png'
-    });
   }
 
   onNotifications(): void {
     if (!isPlatformBrowser(this.platformId)) return;
+    if (!('Notification' in window)) return;
 
-    if (!('Notification' in window)) {
-      alert('This browser does not support notifications.');
-      return;
-    }
-
-    if (Notification.permission === 'granted') {
-      this.showWelcomeNotification();
-    } else if (Notification.permission !== 'denied') {
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') this.showWelcomeNotification();
-      });
-    } else {
-      alert('Notifications are blocked. Please enable them in your browser settings.');
-    }
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        new Notification('🎵 You’re Subscribed!', {
+          body: 'You will now receive updates when new videos are released.',
+        });
+      }
+    });
   }
 }

@@ -48,46 +48,42 @@ export class VideoService {
   constructor(private http: HttpClient) {}
 
   getVideos(): Observable<VideoInterface[]> {
-    const requests = this.baseVideos.map(video =>
-      this.http.get<any>(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${video.youtubeId}&key=${this.API_KEY}`
-      ).pipe(
-        map(response => {
-          // ✅ Check if API returned a valid video
-          if (!response.items || !response.items[0]) {
-            return {
-              ...video,
-              title: 'Video not available',
-              description: 'This video may be private, removed, or invalid.',
-              views: '0',
-              duration: '0:00',
-              publishedAt: new Date()
-            } as VideoInterface;
-          }
+  // 1. Join all IDs into a single string: "ID1,ID2,ID3..."
+  const ids = this.baseVideos.map(v => v.youtubeId).join(',');
 
-          const item = response.items[0];
+  // 2. Make ONE request instead of 29
+  return this.http.get<any>(
+    `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${ids}&key=${this.API_KEY}`
+  ).pipe(
+    map(response => {
+      const items = response.items || [];
+      
+      // 3. Map the YouTube API results back to your baseVideos array
+      return this.baseVideos.map(base => {
+        const youtubeData = items.find((item: any) => item.id === base.youtubeId);
+
+        if (!youtubeData) {
           return {
-            ...video,
-            title: item.snippet.title,
-            description: item.snippet.description,
-            views: this.formatViews(item.statistics?.viewCount || '0'),
-            duration: this.formatDuration(item.contentDetails?.duration || 'PT0S'),
-            publishedAt: new Date(item.snippet.publishedAt)
-          } as VideoInterface;
-        }),
-        catchError(() => of({
-          ...video,
-          title: 'Video not available',
-          description: 'Could not fetch video details due to an error.',
-          views: '0',
-          duration: '0:00',
-          publishedAt: new Date()
-        }))
-      )
-    );
+            ...base,
+            title: 'Video Not Found',
+            views: '0',
+            duration: '0:00',
+            publishedAt: new Date()
+          };
+        }
 
-    return forkJoin(requests);
-  }
+        return {
+          ...base,
+          title: youtubeData.snippet.title,
+          views: this.formatViews(youtubeData.statistics?.viewCount || '0'),
+          duration: this.formatDuration(youtubeData.contentDetails?.duration || 'PT0S'),
+          publishedAt: new Date(youtubeData.snippet.publishedAt)
+        };
+      });
+    }),
+    catchError(() => of(this.baseVideos as VideoInterface[]))
+  );
+}
 
   private formatViews(views: string): string {
     const num = Number(views);

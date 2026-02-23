@@ -1,24 +1,30 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-import { Navbar } from "../../navbar/navbar"; 
+import { Component, OnInit } from '@angular/core'; // Added OnInit
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TourService } from '../../core/model/service/tour.service'; // Import Service
+import { TourShow } from '../../core/model/interface/tour.show'; // Import Interface
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule,RouterModule],
+  standalone: true, // Ensure standalone is set if you're using imports here
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
+export class Home implements OnInit {
   email: string = '';
+  tourDates: TourShow[] = []; // Change type to TourShow interface
 
-  tourDates = [
-    { date: 'March 15', venue: 'The Blue Note', location: 'New York, NY', status: 'Available' },
-    { date: 'March 22', venue: 'The Fillmore Park', location: 'San Francisco, CA', status: 'Sold Out' },
-    { date: 'November 15', venue: 'The Fillmore US', location: 'New York, NY', status: 'Available' }
-  ];
+  constructor(private tourService: TourService) {} // Inject the service
+
+  ngOnInit(): void {
+    // Automatically fetch upcoming shows when home page loads
+    this.tourService.getUpcomingShows().subscribe((data) => {
+      // slice(0, 3) ensures only the first 3 shows appear on Home
+      this.tourDates = data.slice(0, 3); 
+    });
+  }
 
   subscribe() {
     if (this.email) {
