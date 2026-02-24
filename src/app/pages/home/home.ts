@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core'; // Added OnInit
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { TourService } from '../../core/model/service/tour.service'; // Import Service
 import { TourShow } from '../../core/model/interface/tour.show'; // Import Interface
 
 @Component({
   selector: 'app-home',
   standalone: true, // Ensure standalone is set if you're using imports here
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule,RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

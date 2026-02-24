@@ -5,13 +5,14 @@ import { TourService } from '../../core/model/service/tour.service';
 import { TourShow } from '../../core/model/interface/tour.show';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { interval, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 declare var google: any;
 
 @Component({
   selector: 'app-tour',
   standalone: true,
-  imports: [CommonModule, FormsModule, GoogleMapsModule],
+  imports: [CommonModule, FormsModule, GoogleMapsModule,],
   templateUrl: './tour.html',
   styleUrls: ['./tour.css']
 })
@@ -24,12 +25,13 @@ export class Tour implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
   private autoSlideSub?: Subscription;
-  
+
   map: any;
   private AdvancedMarkerElement: any; // Added this to store the library
 
   constructor(
     private tourService: TourService,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -165,20 +167,18 @@ export class Tour implements OnInit, AfterViewInit, OnDestroy {
   }
 
   buyTicket(show: TourShow): void {
-  // Logic to handle ticket purchasing
-  const message = `Redirecting to the secure ticket portal for ${show.venue}.\n\nTickets start at $${show.price}.\nWould you like to continue?`;
-  
-  if (confirm(message)) {
-    // In a real app, you would use: window.open(show.ticketUrl, '_blank');
-    console.log(`Proceeding to buy ticket for show ID: ${show.id}`);
-  }
+  // Navigate to checkout page and pass the show ID
+  this.router.navigate(['/checkout', show.id]);
 }
 
   bookSeat(show: TourShow): void {
-    // This logic opens a registration alert or could navigate to a form
-    alert(`Registration for ${show.venue}: Please fill in your details to secure your free seat.`);
-    // You could also use: this.router.navigate(['/register', show.id]);
-  }
+  // Navigate to the free registration page
+  this.router.navigate(['/register', show.id]);
+}
+
+detailsOfShow(show: TourShow) {
+  this.router.navigate(['/details', show.id]);
+}
 
   subscribe(): void {
     if (this.email) {
