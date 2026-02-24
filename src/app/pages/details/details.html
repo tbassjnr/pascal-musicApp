@@ -1,0 +1,77 @@
+<div class="details-page bg-white min-vh-100" *ngIf="show">
+  <!-- Hero Header -->
+  <div class="detail-hero position-relative overflow-hidden mb-5" 
+       [style.background-image]="'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(' + show.ticketImage + ')'">
+    <div class="container h-100 d-flex flex-column justify-content-end pb-5">
+      <button class="btn btn-link text-white text-decoration-none mb-4 p-0" (click)="goBack()">
+        <i class="bi bi-arrow-left me-2"></i> Back to Tour
+      </button>
+      <div class="badge bg-success mb-3 px-3 py-2 rounded-pill d-inline-block" style="width: fit-content;">
+        {{ show.status }}
+      </div>
+      <h1 class="display-3 fw-bold text-white">{{ show.venue }}</h1>
+      <p class="lead text-white-50">{{ show.location }}</p>
+    </div>
+  </div>
+
+  <div class="container pb-5">
+    <div class="row g-5">
+      <!-- Left Column: Image & Description -->
+      <div class="col-lg-7">
+        <img [src]="show.ticketImage" class="img-fluid rounded-4 shadow-lg mb-4 w-100" alt="Show Image">
+        <h3 class="fw-bold mb-3">About the Show</h3>
+        <p class="text-muted lh-lg">{{ show.description }}</p>
+      </div>
+
+      <!-- Right Column: Info Grid -->
+      <div class="col-lg-5">
+        <div class="card border-0 bg-light rounded-4 p-4 shadow-sm mb-4">
+          <h5 class="fw-bold mb-4 border-bottom pb-2">Event Details</h5>
+          
+          <div class="d-flex align-items-center mb-4">
+            <div class="icon-box bg-white rounded-3 shadow-sm me-3 text-primary">
+              <i class="bi bi-calendar-event fs-4"></i>
+            </div>
+            <div>
+              <div class="small text-muted">Date & Time</div>
+              <div class="fw-bold">{{ show.date | date:'fullDate' }} @ {{ show.date | date:'shortTime' }}</div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center mb-4">
+            <div class="icon-box bg-white rounded-3 shadow-sm me-3 text-success">
+              <i class="bi bi-geo-alt fs-4"></i>
+            </div>
+            <div>
+              <div class="small text-muted">Venue & Location</div>
+              <div class="fw-bold">{{ show.venue }}, {{ show.location }}</div>
+            </div>
+          </div>
+
+          <div class="artist-list mb-4">
+            <div class="small text-muted mb-2">Featured Artists</div>
+            <div class="d-flex flex-wrap gap-2">
+              <span *ngFor="let artist of show.artists" class="badge bg-white text-dark border px-3 py-2 shadow-sm rounded-pill">
+                <i class="bi bi-person-fill me-1 text-primary"></i> {{ artist }}
+              </span>
+            </div>
+          </div>
+
+          <div class="pricing-box bg-dark text-white rounded-4 p-3 text-center">
+            <div class="small opacity-75">Starting from</div>
+            <div class="h2 fw-bold mb-0">{{ show.isFree ? 'FREE' : '$' + show.price }}</div>
+          </div>
+
+          <button 
+            class="btn btn-success btn-lg w-100 mt-4 rounded-pill fw-bold py-3 shadow" 
+            [disabled]="show.status === 'Sold Out'"
+            (click)="proceedToBooking()">
+            
+            <i class="bi" [ngClass]="show.isFree ? 'bi-journal-check' : 'bi-ticket-perforated'"></i>
+            {{ show.isFree ? 'Book Your Seat' : 'Purchase Tickets' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

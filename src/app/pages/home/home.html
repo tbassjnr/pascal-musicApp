@@ -56,7 +56,7 @@
 }">
   {{show.status}}
 </span>
-      <a href="#" 
+      <a routerLink="/tour" 
    class="text-decoration-none small fw-bold"
    [ngClass]="show.status === 'Sold Out' ? 'text-muted opacity-50' : 'text-dark'"
    [style.pointer-events]="show.status === 'Sold Out' ? 'none' : 'auto'"

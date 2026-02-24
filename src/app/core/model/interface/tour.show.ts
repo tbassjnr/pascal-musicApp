@@ -2,7 +2,7 @@ export type ShowStatus = 'Available' | 'Few Left' | 'Sold Out';
 
 export interface TourShow {
   id: string;
-  date: Date; // Added: This is the source of truth for time
+  date: Date; 
   day: string;
   month: string;
   venue: string;
@@ -13,4 +13,7 @@ export interface TourShow {
   lat?: number;
   lng?: number;
   isFree?: boolean;
+  ticketImage?: string;
+  artists?: string[];
+  description?: string; 
 }

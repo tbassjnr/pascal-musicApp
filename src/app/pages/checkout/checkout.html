@@ -1,0 +1,68 @@
+<div class="checkout-container py-5 bg-light min-vh-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+          <div class="row g-0">
+            <!-- Left: Ticket Image & Info -->
+            <div class="col-md-5 bg-dark text-white p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h6 class="text-success text-uppercase fw-bold small">Your Selection</h6>
+                <h2 class="fw-bold">{{show?.venue}}</h2>
+                <p class="opacity-75">{{show?.location}}</p>
+                <img [src]="show?.ticketImage || 'assets/images/default-ticket.png'" 
+                     class="img-fluid rounded-3 my-3 shadow" alt="Ticket">
+              </div>
+              <div class="border-top pt-3">
+                <p class="mb-0 opacity-50 small">Price</p>
+                <h3 class="text-success fw-bold">${{show?.price}}</h3>
+              </div>
+            </div>
+
+            <!-- Right: Form -->
+            <div class="col-md-7 p-4 bg-white">
+              <h4 class="fw-bold mb-4">Complete Your Purchase</h4>
+              
+              <div class="mb-3">
+                <label class="form-label small fw-bold">Purchaser Name</label>
+                <input type="text" class="form-control rounded-3" [(ngModel)]="purchaserName" placeholder="Full Name">
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label class="form-label small fw-bold">Seat Number</label>
+                  <input type="text" class="form-control rounded-3 bg-light" [value]="seatNumber" readonly>
+                </div>
+                <div class="col-6">
+                  <label class="form-label small fw-bold">Payment Method</label>
+                  <select class="form-select rounded-3" [(ngModel)]="paymentMethod">
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Mobile Money">Mobile Money</option>
+                    <option value="PayPal">PayPal</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="alert alert-info small border-0 rounded-3">
+                <i class="bi bi-info-circle me-2"></i> After payment, your ticket will be generated instantly.
+              </div>
+
+              <div class="d-grid gap-2 mt-4">
+                <button class="btn btn-success py-3 fw-bold rounded-pill" (click)="confirmPurchase('email')">
+                  Confirm & Send via Email
+                </button>
+                <button class="btn btn-outline-dark py-2 fw-bold rounded-pill" (click)="confirmPurchase('sms')">
+                  Send via SMS
+                </button>
+              </div>
+              
+              <button class="btn btn-link w-100 text-muted small mt-3" (click)="goToTour()">
+                Cancel Transaction
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
