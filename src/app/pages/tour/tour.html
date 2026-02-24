@@ -18,16 +18,19 @@
     <div class="show-list mx-auto" style="max-width: 900px;">
       <div *ngFor="let show of upcomingShows" class="card show-card mb-3 border-0 shadow-sm p-3">
         <div class="row align-items-center">
+
           <!-- Date -->
           <div class="col-2 text-center border-end">
             <h2 class="fw-bold mb-0 text-primary-custom">{{show.day}}</h2>
             <div class="small fw-bold">{{show.month}}</div>
           </div>
+
           <!-- Details -->
           <div class="col-5">
             <h5 class="fw-bold mb-1">{{show.venue}}</h5>
             <p class="small text-muted mb-0">{{show.location}}</p>
           </div>
+
           <!-- Status/Price -->
           <div class="col-2">
             <span class="badge mb-1" [ngClass]="{
@@ -35,11 +38,28 @@
               'bg-warning-subtle text-warning': show.status === 'Few Left',
               'bg-danger-subtle text-danger': show.status === 'Sold Out'
             }">{{show.status}}</span>
-            <div class="small text-muted">From ${{show.price}}</div>
+            <!-- Price Logic -->
+            <div class="small text-muted">
+              {{ show.isFree ? 'Free Admission' : 'From $' + show.price }}
+            </div>
           </div>
+
           <!-- Actions -->
           <div class="col-3 text-end">
-            <button class="btn btn-sm btn-success-custom me-2" [disabled]="show.status === 'Sold Out'">Buy Ticket</button>
+            <!-- Dynamic Button logic -->
+            <button *ngIf="!show.isFree" 
+                    type="button"
+                    class="btn btn-sm btn-success-custom me-2" 
+                    [disabled]="show.status === 'Sold Out'" (click)="buyTicket(show)">
+              Buy Ticket
+            </button>
+            
+            <button *ngIf="show.isFree" 
+                    class="btn btn-sm btn-primary me-2 shadow-sm" 
+                    [disabled]="show.status === 'Sold Out'"
+                    (click)="bookSeat(show)">
+              Book Seat
+            </button>
             <button class="btn btn-sm btn-outline-secondary">More Info</button>
           </div>
         </div>
@@ -57,24 +77,32 @@
   </section>
 
   <!-- Recent Shows -->
-  <section class="bg-light py-5">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">Recent Shows</h2>
-        <p class="text-muted">Thank you to everyone who joined these amazing nights</p>
-      </div>
-      <div class="row g-4">
-        <div *ngFor="let show of recentShows" class="col-md-4">
-          <div class="card border-0 shadow-sm text-center p-4">
-            <div class="text-muted small mb-2">{{show.dateFull}}</div>
+<section class="bg-light py-5 overflow-hidden">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Recent Shows</h2>
+      <p class="text-muted">Thank you to everyone who joined these amazing nights</p>
+    </div>
+
+    <div class="recent-shows-wrapper">
+      <!-- Added #scrollContainer and mouse events -->
+      <div class="recent-shows-scroll" 
+           #scrollContainer
+           (mouseenter)="stopAutoSlide()" 
+           (mouseleave)="startAutoSlide()">
+           
+        <div *ngFor="let show of recentShows" class="recent-show-item">
+          <div class="card border-0 shadow-sm text-center p-4 h-100">
+            <div class="text-muted small mb-2">{{ show.date | date:'MMMM d, y' }}</div>
             <h5 class="fw-bold">{{show.venue}}</h5>
             <p class="small text-muted">{{show.location}}</p>
-            <span class="text-danger fw-bold small">Sold Out</span>
+            <span class="text-danger fw-bold small">Done</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Newsletter -->
   <section class="container py-5 text-center">
