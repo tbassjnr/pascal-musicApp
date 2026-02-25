@@ -4,8 +4,8 @@
     <div class="container py-5">
       <h1 class="display-3 fw-bold">Live Tour</h1>
       <p class="lead mb-4">Experience the music live. Join me on stage for unforgettable nights of<br> music, energy, and connection.</p>
-      <button class="btn btn-success-custom px-4 py-2">Get Ticket Now</button>
-    </div>
+      <button (click)="scrollToUpcoming()" class="btn btn-success-custom px-4 py-2">Get Ticket Now</button>
+  </div>
   </section>
 
   <!-- Upcoming Shows -->
@@ -15,7 +15,7 @@
       <p class="text-muted">Don't miss these live performances</p>
     </div>
 
-    <div class="show-list mx-auto" style="max-width: 900px;">
+    <div id="upcomingShowsSection" class="show-list mx-auto" style="max-width: 900px;">
       <div *ngFor="let show of upcomingShows" class="card show-card mb-3 border-0 shadow-sm p-3">
         <div class="row align-items-center">
 

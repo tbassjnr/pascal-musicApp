@@ -44,6 +44,8 @@ export class Tour implements OnInit, AfterViewInit, OnDestroy {
       }
     });
 
+    
+
     this.tourService.getRecentShows().subscribe(data => this.recentShows = data);
 
     this.loadShows();
@@ -53,6 +55,20 @@ export class Tour implements OnInit, AfterViewInit, OnDestroy {
       this.loadShows();
     });
   }
+
+  scrollToUpcoming(): void {
+  // Ensure we are in the browser before trying to access the DOM
+  if (isPlatformBrowser(this.platformId)) {
+    const element = document.getElementById('upcomingShowsSection');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start',
+        inline: 'nearest' 
+      });
+    }
+  }
+}
 
   loadShows(): void {
     this.tourService.getUpcomingShows().subscribe(data => {
