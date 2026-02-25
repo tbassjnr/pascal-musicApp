@@ -259,11 +259,12 @@ saveLikes(likes: number[]): void {
 
 
 toggleTrackLike(track: Track): void {
-
+  // 1. Toggle the state
   track.liked = !track.liked;
 
   if (!isPlatformBrowser(this.platformId)) return;
 
+  // 2. Update LocalStorage
   let likedTracks = this.getStoredLikes();
 
   if (track.liked) {
@@ -275,8 +276,6 @@ toggleTrackLike(track: Track): void {
   }
 
   this.saveLikes(likedTracks);
-
-  this.closeLikeModal();
 }
 
 closeLikeModal(): void {

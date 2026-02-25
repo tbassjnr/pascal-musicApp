@@ -40,10 +40,20 @@
 /* Cards */
 .video-card {
   border-radius: 12px;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  cursor: pointer; /* Shows the hand icon on hover */
 }
 
-.video-card:hover { transform: translateY(-5px); }
+/* Subtle lift and stronger shadow when hovering over the card */
+.video-card:hover { 
+  transform: translateY(-8px); 
+  box-shadow: 0 1rem 3rem rgba(0,0,0,0.175) !important;
+}
+
+/* Ensure buttons still look like buttons inside the clickable card */
+.video-card button:hover {
+  transform: scale(1.1);
+}
 
 .category-label { background: #517a54; font-size: 0.7rem; }
 .duration-badge-sm { background: rgba(0,0,0,0.6); font-size: 0.7rem; }
