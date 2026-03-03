@@ -1,0 +1,95 @@
+<div class="volunteer-viewport py-5">
+  <div class="container py-lg-5">
+    
+    <!-- Back Button -->
+    <button class="btn btn-link text-success text-decoration-none mb-4 p-0 fw-bold" (click)="goBack()">
+      <i class="bi bi-arrow-left me-2"></i> Back to Ministry
+    </button>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        
+        <div class="volunteer-card shadow-premium rounded-5 overflow-hidden bg-white border-0">
+          <div class="row g-0">
+            
+            <!-- Left Side: Call to Service -->
+            <div class="col-md-5 d-none d-md-flex flex-column justify-content-center p-5 info-pane text-white">
+              <h2 class="display-5 fw-bold mb-4">Labourers for the <span class="text-success-light">Harvest</span></h2>
+              <p class="lh-lg opacity-75">
+                Join a community of dedicated believers using their gifts to advance the Kingdom. 
+                Whether you are a musician, a technician, or have a heart for outreach, there is a place for you.
+              </p>
+              <div class="mt-4">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-check2-circle text-success-light me-3 fs-4"></i>
+                  <span>Spiritual Mentorship</span>
+                </div>
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-check2-circle text-success-light me-3 fs-4"></i>
+                  <span>Global Impact</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="col-md-7 p-4 p-lg-5">
+              <div *ngIf="!isSubmitted">
+                <h3 class="fw-bold text-dark mb-2">Volunteer Application</h3>
+                <p class="text-muted small mb-4">Tell us a bit about yourself and where you'd like to serve.</p>
+
+                <form [formGroup]="volunteerForm" (ngSubmit)="onSubmit()">
+                  <div class="mb-3">
+                    <label class="form-label small fw-bold">Full Name</label>
+                    <input type="text" formControlName="fullName" class="form-control rounded-3 py-2" placeholder="e.g. John Doe">
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label class="form-label small fw-bold">Email Address</label>
+                      <input type="email" formControlName="email" class="form-control rounded-3 py-2" placeholder="name@example.com">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label small fw-bold">Phone Number</label>
+                      <input type="tel" formControlName="phone" class="form-control rounded-3 py-2" placeholder="+233 ...">
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label small fw-bold">Area of Interest</label>
+                    <select formControlName="areaOfInterest" class="form-select rounded-3 py-2">
+                      <option value="" disabled selected>Select an area</option>
+                      <option *ngFor="let item of interests" [value]="item">{{item}}</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-4">
+                    <label class="form-label small fw-bold">Why do you want to serve? (Optional)</label>
+                    <textarea formControlName="message" class="form-control rounded-3" rows="3"></textarea>
+                  </div>
+
+                  <button type="submit" [disabled]="volunteerForm.invalid" class="btn btn-success w-100 py-3 rounded-pill fw-bold shadow">
+                    Submit Application
+                  </button>
+                </form>
+              </div>
+
+              <!-- Success State -->
+              <div *ngIf="isSubmitted" class="text-center py-5">
+                <div class="success-icon mb-4 mx-auto">
+                  <i class="bi bi-envelope-check"></i>
+                </div>
+                <h3 class="fw-bold text-dark">Application Received!</h3>
+                <p class="text-muted px-lg-5">
+                  Thank you for your willingness to serve. Our team will review your application and get back to you shortly via email.
+                </p>
+                <button class="btn btn-outline-success rounded-pill px-5 mt-3" (click)="goBack()">Return Home</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

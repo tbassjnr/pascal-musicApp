@@ -62,7 +62,9 @@
             <div class="h2 fw-bold mb-0">{{ show.isFree ? 'FREE' : '$' + show.price }}</div>
           </div>
 
+          <!-- 1. Show this button ONLY if it is NOT an outgoing free show -->
           <button 
+            *ngIf="!(show.isFree && show.isOutgoing)"
             class="btn btn-success btn-lg w-100 mt-4 rounded-pill fw-bold py-3 shadow" 
             [disabled]="show.status === 'Sold Out'"
             (click)="proceedToBooking()">
@@ -70,6 +72,14 @@
             <i class="bi" [ngClass]="show.isFree ? 'bi-journal-check' : 'bi-ticket-perforated'"></i>
             {{ show.isFree ? 'Book Your Seat' : 'Purchase Tickets' }}
           </button>
+
+          <!-- 2. Show this static info box ONLY if it IS a free outgoing show -->
+          <div *ngIf="show.isFree && show.isOutgoing" 
+              class="mt-4 p-3 bg-secondary bg-opacity-10 border rounded-4 text-center">
+            <i class="bi bi-box-arrow-up-right fs-3 text-muted d-block mb-2"></i>
+            <h6 class="fw-bold mb-1">Outgoing Show</h6>
+            <p class="small text-muted mb-0">Tickets/Registration for this event are handled externally.</p>
+          </div>
         </div>
       </div>
     </div>

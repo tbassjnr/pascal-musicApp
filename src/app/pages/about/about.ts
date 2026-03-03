@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,8 @@ export class About {
   ];
 
   constructor(
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object // Inject Platform ID for SSR safety
   ){}
 
   timeline = [
@@ -56,13 +57,29 @@ export class About {
 
   influences = Array(12).fill({ name: 'Bob Dylan' });
 
-  downloadPressKit() {
-    console.log('Downloading Press Kit...');
-    // Logic for downloading file
+   downloadPressKit() {
+    // 1. Only run this in the browser
+    if (isPlatformBrowser(this.platformId)) {
+      console.log('Downloading Press Kit...');
+
+      // 2. Define the path to your file in the assets folder
+      const filePath = 'assets/PDF/PASCAL_KOOMSON_MINISTIRES.pdf`'; 
+      const fileName = 'PASCAL_KOOMSON_MINISTIRES.pdf';
+
+      // 3. Create a hidden anchor element
+      const link = document.createElement('a');
+      link.href = filePath;
+      link.download = fileName; // This attribute forces the download
+
+      // 4. Append to body, click it, and remove it
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   }
 
   contactManagement() {
     console.log('Navigating to contact...');
-    this.router.navigate(['/protocol'])
+    this.router.navigate(['/management']);
   }
 }

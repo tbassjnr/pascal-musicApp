@@ -13,6 +13,7 @@ export interface TourShow {
   lat?: number;
   lng?: number;
   isFree?: boolean;
+  isOutgoing?: boolean;
   ticketImage?: string;
   artists?: string[];
   description?: string; 

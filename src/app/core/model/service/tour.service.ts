@@ -65,7 +65,7 @@ export class TourService {
       date: new Date('2026-04-25T20:30:00'), 
       day: '25', month: 'APR', venue: 'Central Park Terrace', 
       location: 'New York, NY', status: 'Available', price: 0, dateFull: 'April 25, 2026', 
-      lat: 40.7812, lng: -73.9665, isFree: true, ticketImage: 'assets/images/thyWord.jpg',
+      lat: 40.7812, lng: -73.9665, isFree: true, isOutgoing: false, ticketImage: 'assets/images/thyWord.jpg',
       artists: ['Pastor Joe Bechem', 'Joe Mettle', 'Cece Twum' ,'Vivian Annan'],
       description: 'An intimate evening of soulful melodies and experimental jazz fusion.'
     },
@@ -86,6 +86,15 @@ export class TourService {
       lat: 60.7812, lng: -83.9665, ticketImage: 'assets/images/thyWord.jpg',
       artists: ['Pastor Joe Bechem', 'Joe Mettle', 'Cece Twum' ,'Vivian Annan'],
       description: 'An intimate evening of soulful melodies and experimental jazz fusion.'
+    },
+    { 
+      id: '10', 
+      date: new Date('2026-05-10T18:00:00'), 
+      day: '10', month: 'MAY', venue: 'Community Festival', 
+      location: 'New Jersey, NJ', status: 'Available', price: 0, 
+      isFree: true, ticketImage: 'assets/images/thyWord.jpg',
+      isOutgoing: true, // This show will only show "Outgoing Show"
+      dateFull: 'May 10, 2026'
     },
   ];
 

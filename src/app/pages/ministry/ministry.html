@@ -1,0 +1,94 @@
+<div class="ministry-page">
+  <!-- Hero Section -->
+  <section class="ministry-hero d-flex align-items-center justify-content-center text-center text-white">
+    <div class="container py-5">
+      <h6 class="text-uppercase ls-3 fw-bold mb-3 animate-up" style="color: #2ecc71;">Our Mission</h6>
+      <h1 class="display-2 fw-bold mb-4 animate-up">Raising a Generation of <br><span class="text-outline">Spirit-Filled Ministers</span></h1>
+      <p class="lead mx-auto opacity-75 animate-up" style="max-width: 800px;">
+        Pascal Koomson Ministries exists to pursue excellence in ministry by creating spirit-filled songs that glorify 
+        Jesus Christ, uplift believers, and reach the lost; to minister with integrity on every platform; and to mentor 
+        and empower the next generation of gospel ministers to use their gifts for God’s Kingdom.
+      </p>
+    </div>
+  </section> 
+
+  <!-- Core Pillars -->
+  <section class="container py-5 mt-n5 position-relative z-10">
+    <div class="row g-4">
+      <div *ngFor="let pillar of pillars" class="col-lg-4">
+        <div class="glass-pillar-card h-100 overflow-hidden shadow-lg border-0">
+          <div class="img-wrapper">
+            <img [src]="pillar.imageUrl" class="card-img-top object-fit-cover" [alt]="pillar.title" style="height: 250px;">
+            <div class="pillar-overlay"></div>
+            <div class="pillar-icon">
+              <i class="bi" [ngClass]="pillar.icon"></i>
+            </div>
+          </div>
+          <div class="card-body p-4 p-xl-5 text-white">
+            <h3 class="fw-bold mb-3">{{ pillar.title }}</h3>
+            <p class="opacity-75 mb-4 small lh-lg">{{ pillar.description }}</p>
+            
+           <!-- Inside your *ngFor loop -->
+            <button 
+            class="btn btn-outline-success-light rounded-pill px-4 shadow-sm" 
+            (click)="navigateToPillar(pillar.id)">
+            Learn More <i class="bi bi-arrow-right ms-2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision & Values -->
+  <section class="container py-5">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <h2 class="display-4 fw-bold mb-4">Our <span style="color: #198754;">Vision</span></h2>
+        <p class="text-muted lh-lg mb-4">
+          To be a vessel of God’s presence, inspiring transformation and revival across the
+          nations through anointed music and authentic worship, marked by excellence in
+          ministry that draws people closer to Christ.      
+        </p>
+        <div class="row g-4">
+          <div class="col-sm-6">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-geo-alt-fill text-success fs-3 me-3"></i>
+              <div class="fw-bold">Global Outreach</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-heart-pulse-fill text-success fs-3 me-3"></i>
+              <div class="fw-bold">Soul Winning</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="position-relative">
+          <img src="assets/images/gratitude.jpg" class="img-fluid rounded-5 shadow-2xl" alt="Ministry Vision">
+          <!-- Glass floating stat -->
+          <div class="floating-glass-stat p-4 rounded-4 shadow-lg text-white">
+            <h2 class="fw-bold mb-0">20+</h2>
+            <div class="small opacity-75">Years of Service</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-banner py-5 text-white text-center">
+    <div class="container py-4">
+      <h2 class="fw-bold display-5 mb-3">Partner with Us</h2>
+      <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 600px;">
+        Your support helps us take the message of Jesus to the corners of the earth.
+      </p>
+      <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-success" (click)="giveNow()">Give Now</button>
+        <button class="btn btn-outline-light btn-lg rounded-pill px-5 fw-bold" (click)="volunteer()">Volunteer</button>
+      </div>
+    </div>
+  </section>
+</div>

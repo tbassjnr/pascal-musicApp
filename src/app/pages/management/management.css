@@ -1,0 +1,170 @@
+/* Variables & Base */
+.mgmt-wrapper {
+  background: #ffffff;
+  padding: 50px 0;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.text-primary-custom { color: #198754; }
+.ls-3 { letter-spacing: 3px; }
+
+/* Background Glow for Glass Effect */
+.ambient-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(25, 135, 84, 0.08) 0%, transparent 70%);
+  top: 10%;
+  right: -100px;
+  z-index: 0;
+}
+
+.outline-text {
+  -webkit-text-stroke: 1px #198754;
+  color: transparent;
+}
+
+/* Master Glass Card */
+.master-glass-card {
+  background: rgba(10, 15, 12, 0.92);
+  backdrop-filter: blur(25px) saturate(150%);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  min-height: 550px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Image Aesthetics */
+.image-frame {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 40px 0 0 40px;
+}
+
+.member-img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.carousel-item.active .member-img {
+  transform: scale(1.1);
+}
+
+.image-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, rgba(10, 15, 12, 1) 100%);
+}
+
+.id-badge {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 5px 15px;
+  border-radius: 50px;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Typography Blocks */
+.badge-accent {
+  background: #198754;
+  color: white;
+  padding: 4px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 4px;
+}
+
+.block-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #198754;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.role-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.8;
+  line-height: 1.8;
+}
+
+/* Duty List */
+.duty-grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.duty-grid li {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+/* Controls Grouping */
+.controls-group {
+  position: absolute;
+  bottom: -40px;
+  right: 50px;
+  display: flex;
+  gap: 15px;
+  z-index: 100;
+}
+
+.btn-nav {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  color: #333;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.btn-nav:hover {
+  background: #198754;
+  color: white;
+  border-color: #198754;
+  transform: translateY(-5px);
+}
+
+/* Animations */
+.carousel-item .member-name {
+  animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .image-frame { border-radius: 40px 40px 0 0; height: 350px; }
+  .image-vignette {
+    background: linear-gradient(0deg, rgba(10, 15, 12, 1) 0%, transparent 40%);
+  }
+  .controls-group { bottom: -30px; right: 0; left: 0; justify-content: center; }
+}
