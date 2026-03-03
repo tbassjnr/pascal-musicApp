@@ -1,0 +1,91 @@
+<div class="mgmt-wrapper mb-5">
+  <!-- Decorative background elements for glass to catch -->
+  <div class="ambient-glow"></div>
+
+  <div class="container position-relative">
+    
+    <!-- Editorial Header -->
+    <div class="row mb-5">
+      <div class="col-lg-6">
+        <h6 class="text-primary-custom fw-bold text-uppercase ls-3 mb-3">Executive Leadership</h6>
+        <h2 class="display-3 fw-bold text-dark mb-0">The Management <br><span class="outline-text">Core</span></h2>
+      </div>
+      <div class="col-lg-5 ms-auto d-flex align-items-end">
+        <p class="text-muted border-start border-success border-3 ps-4 mb-2">
+          Coordinating the global vision of Pascal Koomson Ministries through strategic operational excellence and spiritual integrity.
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Carousel -->
+    <div id="mgmtCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      
+      <!-- Slide Counter -->
+      <div class="slide-counter text-primary-custom fw-bold mb-3">
+        <span class="fs-4">0{{ (activeSlide + 1) }}</span> <span class="text-muted opacity-50 px-2">/</span> <span class="text-muted small">0{{ team.length }}</span>
+      </div>
+
+      <div class="carousel-inner overflow-visible">
+        <div *ngFor="let member of team; let i = index" 
+             class="carousel-item" 
+             [class.active]="i === 0">
+          
+          <div class="master-glass-card shadow-2xl">
+            <div class="row g-0 h-100">
+              
+              <!-- Personnel Visual -->
+              <div class="col-lg-5 position-relative">
+                <div class="image-frame">
+                  <img [src]="member.image" class="member-img" [alt]="member.name">
+                  <div class="image-vignette"></div>
+                  <!-- Floating Badge -->
+                  <div class="id-badge">
+                    <span class="small opacity-75">Verified Leadership</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Personnel Intel -->
+              <div class="col-lg-7 p-4 p-lg-5 text-white content-pane">
+                <div class="mb-5">
+                  <span class="badge-accent mb-3">{{ member.role }}</span>
+                  <h2 class="display-5 fw-bold member-name">{{ member.name }}</h2>
+                </div>
+
+                <div class="info-block mb-5">
+                  <label class="block-label">Strategic Definition</label>
+                  <p class="role-desc">{{ member.definition }}</p>
+                </div>
+
+                <div class="info-block">
+                  <label class="block-label">Key Deliverables</label>
+                  <div class="row">
+                    <div class="col-md-11">
+                      <ul class="duty-grid">
+                        <li *ngFor="let duty of member.responsibilities">
+                          <i class="bi bi-arrow-right-short text-success"></i> {{ duty }}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modern Navigation Controls -->
+      <div class="controls-group">
+        <button class="btn-nav" type="button" data-bs-target="#mgmtCarousel" data-bs-slide="prev">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+        <button class="btn-nav" type="button" data-bs-target="#mgmtCarousel" data-bs-slide="next">
+          <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

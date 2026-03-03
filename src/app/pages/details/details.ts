@@ -34,11 +34,14 @@ export class Details implements OnInit{
   proceedToBooking(): void {
     if (!this.show) return;
 
+    // ADDED GUARD: Prevent navigation if the show is outgoing
+    if (this.show.isFree && this.show.isOutgoing) {
+      return; 
+    }
+
     if (this.show.isFree) {
-      // If it's a free show, go to the registration page
       this.router.navigate(['/register', this.show.id]);
     } else {
-      // If it's a paid show, go to the checkout page
       this.router.navigate(['/checkout', this.show.id]);
     }
   }

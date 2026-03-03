@@ -1,0 +1,103 @@
+.ministry-page {
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+.ls-3 { letter-spacing: 3px; }
+
+/* Hero Section */
+.ministry-hero {
+    height: 70vh;
+    background: linear-gradient(rgba(10, 30, 15, 0.8), rgba(10, 30, 15, 0.9)), 
+                url('/assets/images/thyWord.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    clip-path: ellipse(150% 100% at 50% 0%);
+}
+
+.text-outline {
+    -webkit-text-stroke: 1.5px white;
+    color: transparent;
+}
+
+/* Glassmorphism Pillar Cards */
+.glass-pillar-card {
+    background: #0d2c1d; /* Deep Dark Green */
+    backdrop-filter: blur(10px);
+    border-radius: 2rem;
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.glass-pillar-card:hover {
+    transform: translateY(-15px);
+    background: #123d29;
+}
+
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.pillar-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #0d2c1d 20%, transparent 100%);
+}
+
+.pillar-icon {
+    position: absolute;
+    bottom: -20px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #198754;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.btn-outline-success-light {
+    border: 1px solid rgba(46, 204, 113, 0.5);
+    color: #2ecc71;
+}
+
+.btn-outline-success-light:hover {
+    background: #2ecc71;
+    color: white;
+}
+
+/* Vision Stat Overlay */
+.floating-glass-stat {
+    position: absolute;
+    bottom: 30px;
+    left: -30px;
+    background: rgba(25, 135, 84, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 180px;
+    text-align: center;
+}
+
+/* CTA Section */
+.cta-banner {
+    background: linear-gradient(135deg, #198754 0%, #0d2c1d 100%);
+}
+
+/* Animations */
+.animate-up {
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 991px) {
+    .mt-n5 { margin-top: 0 !important; }
+    .floating-glass-stat { position: static; margin-top: 20px; }
+}

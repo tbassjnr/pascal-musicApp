@@ -14,9 +14,11 @@ export class Navbar {
     { path: '/home', label: 'Home' },
     { path: '/music', label: 'Music' },
     { path: '/video', label: 'Videos' },
+    { path: '/ministry', label: 'Ministry' },
     {
       label: 'Team',
       children: [
+        { path: '/management', label: 'Management' },
         { path: '/protocol', label: 'Protocol' },
         { path: '/band', label: 'Band' }
       ]

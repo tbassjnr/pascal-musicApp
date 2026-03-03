@@ -1,0 +1,73 @@
+<div class="giving-page py-5 min-vh-100">
+  <div class="container py-lg-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        
+        <!-- Header -->
+        <div class="text-center text-white mb-5 animate-up">
+          <h6 class="text-uppercase ls-3 fw-bold mb-3" style="color: #2ecc71;">Partnership</h6>
+          <h1 class="display-4 fw-bold text-dark">Support the <span class="text-outline">Ministry</span></h1>
+          <p class="lead opacity-75 mx-auto text-dark" style="max-width: 600px;">
+            Your generosity enables us to reach the unreached and raise a generation of spirit-filled ministers.
+          </p>
+        </div>
+
+        <div class="glass-giving-card overflow-hidden shadow-lg rounded-5 border-0">
+          <div class="row g-0">
+            <!-- Left Side: Spiritual Message -->
+            <div class="col-md-5 bg-dark p-5 d-none d-md-flex flex-column justify-content-center text-white border-end border-secondary border-opacity-25">
+              <i class="bi bi-heart-fill display-3 text-success mb-4"></i>
+              <h3 class="fw-bold mb-3">A Seed for the Kingdom</h3>
+              <p class="opacity-75 lh-lg">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
+              <div class="mt-4 small opacity-50"><i class="bi bi-shield-check me-2"></i> Secure SSL Encryption</div>
+            </div>
+
+            <!-- Right Side: Payment Form -->
+            <div class="col-md-7 p-4 p-lg-5">
+              <h5 class="fw-bold mb-4">Choose Amount (GHS)</h5>
+              
+              <!-- Amount Presets -->
+              <div class="row g-2 mb-4">
+                <div class="col-3" *ngFor="let amt of amounts">
+                  <button class="btn w-100 py-3 rounded-4 fw-bold" 
+                    [ngClass]="selectedAmount === amt && !customAmount ? 'btn-success' : 'btn-outline-light text-dark border'"
+                    (click)="selectAmount(amt)">
+                    {{amt}}
+                  </button>
+                </div>
+              </div>
+
+              <!-- Custom Amount -->
+              <div class="mb-4">
+                <input type="number" class="form-control form-control-lg rounded-4 bg-light border-0" 
+                       placeholder="Enter Custom Amount" [(ngModel)]="customAmount">
+              </div>
+
+              <h5 class="fw-bold mb-3">Payment Method</h5>
+              <div class="d-flex gap-3 mb-5">
+                <div class="method-box" [class.active]="selectedMethod === 'momo'" (click)="selectedMethod = 'momo'">
+                  <i class="bi bi-phone"></i><span>MoMo</span>
+                </div>
+                <div class="method-box" [class.active]="selectedMethod === 'card'" (click)="selectedMethod = 'card'">
+                  <i class="bi bi-credit-card"></i><span>Card</span>
+                </div>
+                <div class="method-box" [class.active]="selectedMethod === 'paypal'" (click)="selectedMethod = 'paypal'">
+                  <i class="bi bi-paypal"></i><span>PayPal</span>
+                </div>
+              </div>
+
+              <button class="btn btn-success btn-lg w-100 rounded-pill py-3 fw-bold shadow-lg" (click)="processDonation()">
+                Proceed to Give
+              </button>
+              
+              <p class="text-center text-muted small mt-4">
+                Thank you for being a blessing to Pascal Koomson Ministries.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

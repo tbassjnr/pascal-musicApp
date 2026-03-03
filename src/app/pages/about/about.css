@@ -53,7 +53,7 @@
 
 /* Press Kit Section */
 .press-kit-section {
-    background-color: #310085; /* Deep purple from image */
+    background: linear-gradient(135deg, #198754 0%, #0d2c1d 100%);
 }
 
 .press-card {

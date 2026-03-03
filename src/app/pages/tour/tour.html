@@ -46,20 +46,32 @@
 
           <!-- Actions -->
           <div class="col-3 text-end">
-            <!-- Dynamic Button logic -->
+            
+            <!-- 1. Paid Show: Show "Buy Ticket" -->
             <button *ngIf="!show.isFree" 
                     type="button"
                     class="btn btn-sm btn-success-custom me-2" 
-                    [disabled]="show.status === 'Sold Out'" (click)="buyTicket(show)">
+                    [disabled]="show.status === 'Sold Out'" 
+                    (click)="buyTicket(show)">
               Buy Ticket
             </button>
             
-            <button *ngIf="show.isFree" 
+            <!-- 2. Free & Internal Show: Show "Book Seat" -->
+            <!-- Note the check: && !show.isOutgoing -->
+            <button *ngIf="show.isFree && !show.isOutgoing" 
                     class="btn btn-sm btn-primary me-2 shadow-sm" 
                     [disabled]="show.status === 'Sold Out'"
                     (click)="bookSeat(show)">
               Book Seat
             </button>
+
+            <!-- 3. Free & Outgoing Show: Show Static Label (No Function) -->
+            <span *ngIf="show.isFree && show.isOutgoing" 
+                  class="badge border text-muted me-2 px-3 py-2" 
+                  style="background: #f8f9fa;">
+              <i class="bi bi-box-arrow-up-right me-1"></i> Outgoing Show
+            </span>
+
             <button class="btn btn-sm btn-outline-secondary" (click)="detailsOfShow(show)">More Info</button>
           </div>
         </div>

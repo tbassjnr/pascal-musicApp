@@ -45,6 +45,6 @@ export class Band {
         `Each performance is an exploration of human connection. We believe that music is the ultimate universal language, and our mission has always been to create 'sonic sanctuaries'—spaces where listeners can lose themselves in the melody and find themselves in the lyrics.`,
         `With three studio albums and over 200 live shows under our belt, we continue to push the boundaries of our craft. For us, the vision is simple: Stay authentic, stay loud, and never stop chasing the perfect chord.`
       ],
-      featuredImageUrl: 'assets/images/home.png' // Replace with your image
+      featuredImageUrl: 'assets/images/powerhouseband.jpg' // Replace with your image
     };
 }

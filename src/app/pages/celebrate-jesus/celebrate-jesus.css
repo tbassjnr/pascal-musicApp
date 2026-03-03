@@ -1,0 +1,92 @@
+/* Custom Green Accents */
+.text-success-light { color: #2ecc71; }
+.ls-3 { letter-spacing: 3px; }
+
+/* Core positioning for the button */
+.btn-go-back {
+  position: absolute;
+  top: 50px; /* Adjust this value to move it higher or lower */
+  left: 25px;  /* Aligns with the left edge of the container grid */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.85rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.btn-go-back i {
+  transition: transform 0.3s ease;
+}
+
+/* Slick Hover Effect */
+.btn-go-back:hover {
+  color: #2ecc71; /* Your primary color */
+}
+
+.btn-go-back:hover i {
+  transform: translateX(-5px); /* Micro-interaction to show 'back' direction */
+}
+
+/* Ensure parent container can handle absolute children */
+.position-relative {
+  position: relative !important;
+}
+
+/* Animation offset to match your other elements */
+.animate-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Hero Base */
+.project-hero {
+  height: 65vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Unique backgrounds for each ID */
+.celebrate-bg { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('/assets/images/thyWord.jpg'); }
+
+/* Glassmorphism Effect */
+.glass-header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px white;
+  color: transparent;
+}
+
+.glass-hover {
+  transition: all 0.3s ease;
+}
+.glass-hover:hover {
+  background: rgba(25, 135, 84, 0.1);
+  border-color: #198754 !important;
+}
+
+/* Shadow and Border Radius */
+.rounded-5 { border-radius: 2.5rem !important; }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+
+/* Animation */
+.animate-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
