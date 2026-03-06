@@ -1,0 +1,94 @@
+.bio-page {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  z-index: 1; 
+  position: relative;
+}
+
+:host ::ng-deep .navbar {
+  z-index: 1050 !important; 
+  background-color: white !important; /* Must be solid to hide text behind it */
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+/* 3. Handling the Sticky Sidebar in Bio Page */
+.col-lg-4 .sticky-top {
+  /* This ensures the sidebar is also behind the navbar */
+  z-index: 10; 
+  top: 110px; /* Navbar height + small buffer */
+}
+
+.ls-3 { letter-spacing: 3px; }
+.ls-2 { letter-spacing: 2px; }
+.ls-1 { letter-spacing: 1px; }
+
+/* Navigation Button */
+.btn-back {
+  background: #f8f9fa;
+  border: 1px solid #eee;
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background: #198754;
+  color: white;
+  transform: translateX(-5px);
+}
+
+/* Hero Aesthetics */
+.hero-image-box {
+  position: relative;
+  background-color: #000;
+}
+
+.image-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+}
+
+.hero-text-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Premium Shadows */
+.shadow-premium {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05) !important;
+}
+
+.rounded-5 {
+  border-radius: 2rem !important;
+}
+
+/* Text Polish */
+.bio-content p {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.text-secondary {
+  color: #555 !important;
+}
+
+/* Animation */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Logic */
+@media (max-width: 991px) {
+  .sticky-top { position: static !important; }
+  .hero-image-box { border-radius: 1.5rem !important; height: 350px !important; }
+  .display-4 { font-size: 2.5rem; }
+}
