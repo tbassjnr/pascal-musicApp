@@ -1,43 +1,28 @@
 import { Routes } from '@angular/router'; 
 import { Home } from './pages/home/home';
-import { Music } from './pages/music/music';
-import { Video} from './pages/video/video';
-import { Band } from './pages/band/band';
-import { Tour } from './pages/tour/tour';
-import { About } from './pages/about/about';
-import { Contact } from './pages/contact/contact';
-import { Protocol } from './pages/protocol/protocol';
-import { Checkout } from './pages/checkout/checkout';
-import { Register } from './pages/register/register';
-import { Details } from './pages/details/details';
-import { CelebrateJesus } from './pages/celebrate-jesus/celebrate-jesus';
-import { Management } from './pages/management/management';
-import { min } from 'rxjs';
-import { Ministry } from './pages/ministry/ministry';
-import { SingoutExperience } from './pages/singout-experience/singout-experience';
-import { ChooseJesusCampaign } from './pages/choose-jesus-campaign/choose-jesus-campaign';
-import { Give } from './pages/give/give';
-import { Volunteer } from './pages/volunteer/volunteer';
 
 export const routes: Routes = [
-  { path: 'home', component: Home },
-  { path: 'music', component: Music },
-  { path: 'video', component: Video},
-  { path: 'band', component: Band },
-  { path: 'ministry', component: Ministry },
-  { path: 'give', component: Give },
-  { path: 'volunteer', component: Volunteer }, 
-  { path: 'celebrate-jesus', component: CelebrateJesus },
-  { path: 'sing-out-experience', component: SingoutExperience },
-  { path: 'choose-jesus-campaign', component: ChooseJesusCampaign},
-  { path: 'management', component: Management },
-  { path: 'tour', component: Tour },
-  { path: 'about', component: About },
-  { path: 'contact', component: Contact },
-  { path: 'protocol', component: Protocol},
-  { path: 'checkout/:id', component: Checkout},
-  { path: 'register/:id', component: Register },
-  { path: 'details/:id', component: Details },
+  { path: 'home', title: 'Home - Pascal Koomson Ministries', component: Home },
+  { path: 'music' , title: 'Music - Pascal Koomson Ministries', loadComponent : () => import('./pages/music/music').then(m => m.Music) },
+  { path: 'video', title: 'Video - Pascal Koomson Ministries', loadComponent: () => import('./pages/video/video').then(m => m.Video) },
+  { path: 'band', title: 'Band - Pascal Koomson Ministries', loadComponent: () => import('./pages/band/band').then(m => m.Band) },
+  { path: 'ministry', title: 'Ministry - Pascal Koomson Ministries', loadComponent: () => import('./pages/ministry/ministry').then(m => m.Ministry) },
+  { path: 'give', title: 'Give - Pascal Koomson Ministries', loadComponent: () => import('./pages/give/give').then(m => m.Give) },
+  { path: 'volunteer', title: 'Volunteer - Pascal Koomson Ministries', loadComponent: () => import('./pages/volunteer/volunteer').then(m => m.Volunteer) },
+  { path: 'celebrate-jesus', title: 'Celebrate Jesus - Pascal Koomson Ministries', loadComponent: () => import('./pages/celebrate-jesus/celebrate-jesus').then(m => m.CelebrateJesus) },
+  { path: 'sing-out-experience', title: 'Sing Out Experience - Pascal Koomson Ministries', loadComponent: () => import('./pages/singout-experience/singout-experience').then(m => m.SingoutExperience) },
+  { path: 'choose-jesus-campaign', title: 'Choose Jesus Campaign - Pascal Koomson Ministries', loadComponent: () => import('./pages/choose-jesus-campaign/choose-jesus-campaign').then(m => m.ChooseJesusCampaign) },
+  { path: 'management', title: 'Management - Pascal Koomson Ministries', loadComponent: () => import('./pages/management/management').then(m => m.Management) },
+  { path: 'tour', title: 'Tour - Pascal Koomson Ministries', loadComponent: () => import('./pages/tour/tour').then(m => m.Tour) },
+  { path: 'about', title: 'About - Pascal Koomson Ministries', loadComponent: () => import('./pages/about/about').then(m => m.About) },
+  { path: 'contact', title: 'Contact - Pascal Koomson Ministries', loadComponent: () => import('./pages/contact/contact').then(m => m.Contact) },
+  { path: 'protocol', title: 'Protocol - Pascal Koomson Ministries', loadComponent: () => import('./pages/protocol/protocol').then(m => m.Protocol) },
+  { path: 'checkout/:id', title: 'Checkout - Pascal Koomson Ministries', loadComponent: () => import('./pages/checkout/checkout').then(m => m.Checkout) },
+  { path: 'register/:id', title: 'Register - Pascal Koomson Ministries', loadComponent: () => import('./pages/register/register').then(m => m.Register) },
+  { path: 'details/:id', title: 'Details - Pascal Koomson Ministries', loadComponent: () => import('./pages/details/details').then(m => m.Details) },
+  { path: 'high-res-photos', title: 'High Res Photos - Pascal Koomson Ministries', loadComponent: () => import('./pages/high-res-photos/high-res-photos').then(m => m.HighResPhotos) },
+  { path: 'biography', title: 'Biography - Pascal Koomson Ministries', loadComponent: () => import('./pages/biography/biography').then(m => m.Biography) },
+  { path: 'tech-rider', title: 'Tech Rider - Pascal Koomson Ministries', loadComponent: () => import('./pages/tech-rider/tech-rider').then(m => m.TechRider) },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];

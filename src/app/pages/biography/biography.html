@@ -1,0 +1,85 @@
+<div class="bio-page min-vh-100 py-5 bg-white">
+  <div class="container">
+    
+    <!-- Navigation Header -->
+    <div class="d-flex justify-content-between align-items-center mb-5 animate-fade-in">
+      <button (click)="goBack()" class="btn btn-back">
+        <i class="bi bi-arrow-left me-2"></i> Back to About
+      </button>
+      <div class="text-end">
+        <h6 class="text-success fw-bold text-uppercase ls-3 mb-0">Artist Profile</h6>
+        <h2 class="fw-bold text-dark">Biography & Facts</h2>
+      </div>
+    </div>
+
+    <div class="row g-5">
+      <!-- Left Column: The Story -->
+      <div class="col-lg-8 animate-fade-in">
+        <div class="hero-image-box mb-5 rounded-5 overflow-hidden shadow-lg position-relative">
+          <img src="assets/images/Pascal.jpg" class="img-fluid w-100 object-fit-cover" style="height: 600px;" alt="Pascal Koomson Portrait">
+          <div class="image-overlay-gradient"></div>
+          <div class="hero-text-overlay p-4 p-lg-5">
+            <h1 class="display-4 fw-bold text-white mb-0">Pascal Koomson</h1>
+            <p class="text-white-50 fs-5">A Voice for the Kingdom</p>
+          </div>
+        </div>
+
+        <div class="bio-content pe-lg-4">
+          <h3 class="fw-bold mb-4 border-start border-success border-4 ps-3">The Journey</h3>
+          <p class="lh-lg text-secondary">
+            Pascal Koomson is a prolific gospel recording artist and worship leader whose ministry has transcended borders, 
+            touching lives across the globe. Born and raised with a deep-seated passion for the divine, 
+            his musical journey began in the local church where he discovered the power of a single note 
+            to shift atmospheres.
+          </p>
+          <p class="lh-lg text-secondary">
+            With a unique blend of African rhythmic intensity and contemporary soulful melodies, 
+            Pascal has carved a niche as a minister who doesn't just perform, but creates an altar of worship 
+            wherever he stands. His commitment to excellence is seen not only in his vocal prowess but 
+            in his integrity as a servant of God.
+          </p>
+
+          <h3 class="fw-bold mt-5 mb-4">Artistry & Ministry</h3>
+          <p class="lh-lg text-secondary mb-5">
+            Beyond the music, Pascal is the visionary behind "Pascal Koomson Ministries," an organization 
+            dedicated to raising a generation of spirit-filled ministers. Through initiatives like 
+            the "Sing Out Experience" and "Choose Jesus Campaign," he continues to mentor young artists 
+            and lead evangelistic outreaches to the unreached.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Quick Facts & Highlights -->
+      <div class="col-lg-4">
+        <div class="sticky-top" style="top: 100px;">
+          
+          <!-- Quick Facts Card -->
+          <div class="card border-0 shadow-premium rounded-5 overflow-hidden mb-4 bg-light">
+            <div class="card-header bg-dark text-white py-3 px-4">
+              <h5 class="fw-bold mb-0 small text-uppercase ls-2">Quick Facts</h5>
+            </div>
+            <div class="card-body p-4">
+              <div *ngFor="let fact of quickFacts" class="mb-3 border-bottom pb-2">
+                <label class="small text-success fw-bold text-uppercase ls-1">{{fact.label}}</label>
+                <div class="text-dark fw-semibold">{{fact.value}}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Highlights -->
+          <div class="card border-0 shadow-premium rounded-5 bg-success text-white">
+            <div class="card-body p-4">
+              <h5 class="fw-bold mb-4 text-uppercase ls-2 small">Career Highlights</h5>
+              <div *ngFor="let item of milestones" class="d-flex mb-3 align-items-start">
+                <span class="badge bg-white text-success me-3">{{item.year}}</span>
+                <span class="small opacity-90">{{item.event}}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

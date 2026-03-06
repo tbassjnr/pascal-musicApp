@@ -82,4 +82,19 @@ export class About {
     console.log('Navigating to contact...');
     this.router.navigate(['/management']);
   }
+
+  highResolution() {
+    console.log('Navigating to high-resolution photos...');
+    this.router.navigate(['/high-res-photos']);
+  }
+
+  biographyAndFacts() {
+    console.log('Navigating to biography and facts...');
+    this.router.navigate(['/biography']);
+  }
+
+  techRider() {
+    console.log('Navigating to tech rider...');
+    this.router.navigate(['/tech-rider']); 
+  }
 }

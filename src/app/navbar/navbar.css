@@ -1,0 +1,151 @@
+/* Core Navbar alignment */
+.navbar {
+  min-height: 75px;
+}
+
+.brand-text {
+  font-family: 'Reggae One', cursive;
+  font-size: 1.55rem;
+  font-weight: 600; /* Reggae One is naturally bold */
+  
+  /* The "Classy" Secret: Letter Spacing */
+  /* This prevents the brush strokes from looking cluttered */
+  letter-spacing: 1.8px;
+  
+  /* Premium Metallic Green Gradient */
+  background: linear-gradient(135deg, #0f0f0f 0%, #222222 50%, #000000 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Adds depth so it looks like it's carved/embossed */
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
+  
+  display: inline-block;
+  line-height: 1.2;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Slick Interaction */
+.brand-text:hover {
+  letter-spacing: 3px; /* "Breathes" outward when you hover */
+  filter: drop-shadow(0px 4px 8px rgba(25, 135, 84, 0.3));
+  transform: scale(1.02);
+}
+
+/* Small screen adjustment: Ensure font fits when title is visible */
+@media (max-width: 1024px) {
+  .brand-text {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* 1. Logic for screens 1024px and below */
+@media (max-width: 1024px) {
+  /* Ensure the container wraps so the menu can go to the second line */
+  .navbar > .container {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Force hamburger to show */
+  .navbar-expand-lg .navbar-toggler {
+    display: block;
+    order: 2; /* Position on the right */
+  }
+
+  .navbar-brand {
+    order: 1; /* Position on the left */
+  }
+
+  /* HIDDEN BY DEFAULT: Override Bootstrap's expanded flex behavior */
+  .navbar-expand-lg .navbar-collapse {
+    display: none !important; /* Forces it to stay hidden */
+    order: 3;
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  /* VISIBLE ON CLICK: Only show when Bootstrap adds .show or during animation (.collapsing) */
+  .navbar-expand-lg .navbar-collapse.show,
+  .navbar-expand-lg .collapsing {
+    display: block !important;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  .nav-item {
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+  }
+
+  /* Slick Mobile Logo Scaling */
+  .brand-logo {
+    height: 60px !important;
+    margin-top: -5px !important;
+    margin-bottom: -5px !important;
+  }
+
+  /* Mobile active link style */
+  .nav-link.active-link {
+    /* color: #198754 !important; */
+    border-left: 4px solid #198754;
+    padding-left: 15px !important;
+    font-weight: bold;
+  }
+}
+
+/* 2. Logic for small phones (430px) - Hides Title */
+@media (max-width: 430px) {
+  .brand-text {
+    display: none;
+  }
+  .brand-logo {
+    height: 55px !important;
+  }
+}
+
+/* --- Base Slick Styles (Desktop & Animations) --- */
+.brand-logo {
+  height: 75px;
+  width: auto;
+  margin-top: -15px; 
+  margin-bottom: -15px;
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand {
+  color: #198754 !important;
+}
+
+.brand-text {
+  font-size: 1.1rem;
+}
+
+/* Desktop Styles (1025px and up) */
+@media (min-width: 1025px) {
+    .nav-link.active-link {
+        border-bottom: 2px solid #198754;
+    }
+    
+    .dropdown-animated {
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+    }
+    
+    .dropdown:hover .dropdown-animated {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
