@@ -67,10 +67,10 @@
 
             <!-- 3. Free & Outgoing Show: Show Static Label (No Function) -->
             <span *ngIf="show.isFree && show.isOutgoing" 
-                  class="badge border text-muted me-2 px-3 py-2" 
-                  style="background: #f8f9fa;">
-              <i class="bi bi-box-arrow-up-right me-1"></i> Outgoing Show
-            </span>
+                    class="badge border text-muted px-3 py-2 fw-normal outgoing-badge" 
+                    style="background: #f8f9fa;">
+                <i class="bi bi-box-arrow-up-right me-1"></i> Outgoing
+              </span>
 
             <button class="btn btn-sm btn-outline-secondary" (click)="detailsOfShow(show)">More Info</button>
           </div>

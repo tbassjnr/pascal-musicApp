@@ -27,7 +27,7 @@
             </a>
             <ul class="dropdown-menu dropdown-animated border-0 shadow-sm ">
               <li *ngFor="let child of link.children">
-                <a class="dropdown-item bg-white text-decoration-none" [routerLink]="child.path" routerLinkActive="fw-bold text-success">
+                <a class="dropdown-item bg-white text-decoration-none" [routerLink]="child.path" routerLinkActive="fw-bold text-success" (click)="closeMenu()">
                   {{child.label}}
                 </a>
               </li>
