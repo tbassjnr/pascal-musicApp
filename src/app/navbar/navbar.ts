@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule, isPlatformBrowser} from '@angular/common'; 
+import { Component, Inject, PLATFORM_ID } from '@angular/core'; 
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -27,4 +27,23 @@ export class Navbar {
     { path: '/about', label: 'About' },
     { path: '/contact', label: 'Contact' }
   ];
+
+  constructor(
+  private router: Router,
+  @Inject(PLATFORM_ID) private platformId: Object
+) {
+
+  this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.closeMenu();
+      }
+    });
+}
+
+  closeMenu() {
+  if (isPlatformBrowser(this.platformId)) {
+    const menu = document.getElementById('navbarNav');
+    menu?.classList.remove('show');
+  }
+}
 }
