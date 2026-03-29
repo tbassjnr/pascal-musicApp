@@ -133,7 +133,7 @@ export class Video implements OnInit {
   }
 
   onSubscribeYoutube(): void {
-    const youtubeChannelUrl = 'https://www.youtube.com/@KelvinTheBra'; // Added placeholder
+    const youtubeChannelUrl = 'https://www.youtube.com/@pascalkoomson'; // Added placeholder
     if (isPlatformBrowser(this.platformId)) window.open(youtubeChannelUrl, '_blank');
   }
 

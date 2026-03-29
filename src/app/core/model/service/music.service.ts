@@ -15,8 +15,8 @@ export class MusicService {
       type: 'Album',
       coverImg: 'assets/images/home.png',
       description: 'A haunting melody that captures the essence of late-night contemplation. This track explores themes of love, loss, and hope.',
-      spotifyUrl: '#',
-      appleMusicUrl: '#',
+      spotifyUrl: 'https://open.spotify.com/artist/0vBDtQ8ZWHFgmzfQZMm2rd?si=Yk-AWNlgSQKI_29Qq8i10w',
+      appleMusicUrl: 'https://music.apple.com/us/artist/pascal-koomson/1473209512',
       tracks: [
         { id: 1, title: 'Midnight Dreams', duration: '3:45', previewUrl: 'assets/audios/nkunimBongo.mp3' },
         { id: 2, title: 'Shadow Waltz', duration: '4:12', previewUrl: 'assets/audios/choraleHighlifeMedley.mp3' },
