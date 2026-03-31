@@ -4,6 +4,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { Navbar } from './navbar/navbar';
 import { Footer } from './footer/footer';
 import { CommonModule } from '@angular/common';
+import { Bible } from "./shared/bible/bible";
 
 @Component({
   selector: 'app-root',

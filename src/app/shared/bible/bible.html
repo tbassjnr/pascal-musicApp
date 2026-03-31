@@ -1,0 +1,57 @@
+<div class="bible-viewport py-5">
+  <div class="container py-lg-5">
+    
+    <!-- Header -->
+    <!-- <div class="text-center mb-5 animate-up">
+      <h6 class="text-success fw-bold text-uppercase ls-3 mb-2">Daily Bread</h6>
+      <h2 class="display-4 fw-bold text-dark mb-4">The <span class="text-outline-green">Living</span> Word</h2>
+       -->
+      <!-- Search Bar Group -->
+      <!-- <div class="search-glass mx-auto p-2 rounded-pill shadow-lg d-flex align-items-center" style="max-width: 500px;">
+        <input type="text" class="form-control border-0 bg-transparent ps-4 shadow-none" 
+               placeholder="Search e.g. John 3:16" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">
+        <button class="btn btn-success rounded-pill px-4 py-2 fw-bold" (click)="onSearch()">
+          <i class="bi bi-search me-2"></i> Read
+        </button>
+      </div>
+    </div> -->
+
+    <!-- Main Scripture Card -->
+    <div class="row justify-content-center">
+      <div class="col-lg-8 position-relative">
+        
+        <!-- Loading Spinner -->
+        <div *ngIf="isLoading" class="text-center py-5">
+          <div class="spinner-grow text-success" role="status"></div>
+        </div>
+
+        <!-- Glass Scripture Card -->
+        <div *ngIf="!isLoading && currentVerse" class="sacred-card p-4 p-lg-5 rounded-5 shadow-premium animate-fade">
+          
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="badge-glass px-3 py-1 rounded-pill small fw-bold text-success">
+              {{ currentVerse.translation_name || 'KJV' }}
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-icon-glass" (click)="copyVerse()" title="Copy">
+                <i class="bi bi-clipboard-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="scripture-text-wrapper text-center">
+            <i class="bi bi-quote display-1 text-success opacity-10 position-absolute start-0 top-0"></i>
+            <h2 class="bible-text lh-base text-dark mb-4">
+              {{ currentVerse.text }}
+            </h2>
+            <div class="reference-line mx-auto mb-3"></div>
+            <h4 class="fw-bold text-success ls-2">{{ currentVerse.reference }}</h4>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
