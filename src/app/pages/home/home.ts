@@ -10,11 +10,12 @@ import { VideoInterface } from '../../core/model/interface/video.interface';
 import { VideoService } from '../../core/model/service/video.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MinistryService } from '../../core/model/service/ministry.service';
+import { Bible } from "../../shared/bible/bible";
 
 @Component({
   selector: 'app-home',
   standalone: true, // Ensure standalone is set if you're using imports here
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule, RouterLink,],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule, RouterLink, Bible],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
