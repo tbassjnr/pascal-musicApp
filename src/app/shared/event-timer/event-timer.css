@@ -1,0 +1,62 @@
+/* Container: Base Style (Desktop) */
+.compact-glass-timer {
+  width: 100%;
+  max-width: 520px; /* Maximum width on Large Screens */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+  margin: 0 auto; /* Center within its column/div */
+}
+
+/* TABLET VIEW (Up to 991px) */
+@media (max-width: 991px) {
+  .compact-glass-timer {
+    max-width: 420px; /* Slightly narrower for tablets */
+    border-radius: 1.5rem;
+  }
+  .t-val { font-size: 1.4rem; }
+  .event-title { font-size: 1rem; }
+}
+
+/* MOBILE VIEW (Standard) */
+@media (max-width: 576px) {
+  .compact-glass-timer {
+    max-width: 360px;
+    border-radius: 1.2rem;
+  }
+}
+
+/* SMALL MOBILE (375px and below) */
+@media (max-width: 375px) {
+  .compact-glass-timer {
+    max-width: 310px; /* Reduced width to prevent edge-touching */
+  }
+  .p-3 { padding: 0.8rem !important; }
+  .t-val { font-size: 1.1rem; }
+  .t-lbl { font-size: 0.5rem; }
+  .status-text { font-size: 0.55rem; }
+  .date-badge { padding: 3px 10px; font-size: 0.6rem; }
+}
+
+/* Internal Shared Styles */
+.live-indicator { display: flex; align-items: center; gap: 8px; }
+.pulse-dot { width: 8px; height: 8px; background-color: #2ecc71; border-radius: 50%; box-shadow: 0 0 10px #2ecc71; animation: blink 1.5s infinite; }
+.status-text { text-transform: uppercase; font-weight: 800; letter-spacing: 1.5px; color: white; }
+.date-badge { background: #198754; color: white; font-weight: 700; border-radius: 50px; }
+.event-title { color: white; font-weight: 600; }
+.timer-grid { display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.2); padding: 12px; border-radius: 1.2rem; }
+.timer-slot { text-align: center; flex: 1; }
+.t-val { display: block; font-family: 'Reggae One', cursive; color: white; line-height: 1; }
+.t-val.highlight { color: #2ecc71; }
+.t-lbl { text-transform: uppercase; color: rgba(255, 255, 255, 0.5); font-weight: 700; letter-spacing: 1px; }
+.t-sep { color: rgba(255, 255, 255, 0.2); font-size: 1.2rem; margin-top: -12px; }
+.btn-timer-action { background-color: #ffffff; color: #198754; border: none; font-size: 0.85rem; padding: 10px; transition: all 0.3s ease; }
+.btn-timer-action:hover { background-color: #2ecc71; color: white; }
+
+@keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+.animate-fade-in { animation: fadeIn 1s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }

@@ -5,6 +5,7 @@ import { Navbar } from './navbar/navbar';
 import { Footer } from './footer/footer';
 import { CommonModule } from '@angular/common';
 import { Bible } from "./shared/bible/bible";
+import { EventTimer } from "./shared/event-timer/event-timer";
 
 @Component({
   selector: 'app-root',

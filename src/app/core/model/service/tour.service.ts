@@ -61,6 +61,7 @@ export class TourService {
       artists: ['Etriakor Charles', 'Joe Mettle','Koda' ,'Vivian Annan'],
       description: 'An encounter night, qworshipping the Marker.'
     },
+    // events in the future
     { id: '7', 
       date: new Date('2026-04-25T20:30:00'), 
       day: '25', month: 'APR', venue: 'Central Park Terrace', 
@@ -87,6 +88,7 @@ export class TourService {
       artists: ['Pastor Joe Bechem', 'Joe Mettle', 'Cece Twum' ,'Vivian Annan'],
       description: 'An intimate evening of soulful melodies and experimental jazz fusion.'
     },
+    // event
     { 
       id: '10', 
       date: new Date('2026-05-10T18:00:00'), 
@@ -95,6 +97,16 @@ export class TourService {
       isFree: true, ticketImage: 'assets/images/thyWord.jpg',
       isOutgoing: true, // This show will only show "Outgoing Show"
       dateFull: 'May 10, 2026'
+    },
+
+    { 
+      id: '11', 
+      date: new Date('2026-06-10T20:00:00'), 
+      day: '10', month: 'JUN', venue: 'Powerhouse Band Festival', 
+      location: 'New Jersey, NJ', status: 'Available', price: 0, 
+      isFree: true, ticketImage: 'assets/images/powerhouseband.jpg',
+      isOutgoing: true, // This show will only show "Outgoing Show"
+      dateFull: 'June 10, 2026'
     },
   ];
 

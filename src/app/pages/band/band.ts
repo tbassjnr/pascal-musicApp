@@ -14,26 +14,110 @@ export class Band {
   
   members: BandMember[] = [
     {
-      fullName: 'Kelvin TheBra',
-      role: 'Lead Vocalist & Guitarist',
+      fullName: 'Bryan Alakwa',
+      role: 'Bass Guitarist & Band Leader',
       description: 'The creative force behind the sound, Kelvin blends soulful lyrics with experimental rhythms to create a unique sonic landscape.',
       imageUrl: 'assets/images/home.png', // Replace with your image paths
       socials: { instagram: '#', spotify: '#', twitter: '#' }
     },
     {
-      fullName: 'Sarah Jenkins',
-      role: 'Keyboards & Backing Vocals',
+      fullName: 'Samuel Terry',
+      role: 'Lead Guitarist',
       description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
       imageUrl: 'assets/images/about.png',
       socials: { instagram: '#', spotify: '#', facebook: '#' }
     },
     {
-      fullName: 'Marcus "Thunder" Cole',
-      role: 'Drums & Percussion',
+      fullName: 'Enock Kojo Acheampong Nuako',
+      role: 'Drummer',
       description: 'The heartbeat of the band. Marcus brings an energetic fusion of jazz precision and rock power to every live performance.',
       imageUrl: 'assets/images/Pascal.jpg',
       socials: { twitter: '#', spotify: '#' }
-    }
+    },
+    {
+      fullName: 'Michael Nti',
+      role: 'Keyboardist',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Kwesi Myron',
+      role: 'Keyboardist',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Richmond Korankye',
+      role: 'Keyboardist',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Chris Tork',
+      role: 'Backing Vocalist (Tenor)',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Judit Ossei',
+      role: 'Backing Vocalist (Alto)',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Nora Sowah',
+      role: 'Backing Vocalist (Soprano)',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Efua Kweiba Cann',
+      role: 'Backing Vocalist (Alto)',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Gifty Benewa Obeng',
+      role: 'Backing Vocalist (Soprano)',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Samuel Anaman',
+      role: 'Backing Vocalist (Tenor)',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Georgette Dede Korankye',
+      role: 'Backing Vocalist (Soprano)',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Samuel Ashirifie',
+      role: 'Backing Vocalist (Tenor)',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/sam.jpg',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
+    {
+      fullName: 'Adelaide Efiba Paha',
+      role: 'Backing Vocalist (Alto)',
+      description: 'A classical prodigy turned synth enthusiast, Sarah adds the atmospheric layers that define the band\'s signature "dreamy" vibe.',
+      imageUrl: 'assets/images/about.png',
+      socials: { instagram: '#', spotify: '#', facebook: '#' }
+    },
   ];
 
   // Inside your BandMembersComponent class
