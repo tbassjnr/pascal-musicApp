@@ -11,11 +11,12 @@ import { VideoService } from '../../core/model/service/video.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MinistryService } from '../../core/model/service/ministry.service';
 import { Bible } from "../../shared/bible/bible";
+import { EventTimer } from "../../shared/event-timer/event-timer";
 
 @Component({
   selector: 'app-home',
   standalone: true, // Ensure standalone is set if you're using imports here
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule, RouterLink, Bible],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule, RouterLink, Bible, EventTimer],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -30,6 +31,16 @@ export class Home implements OnInit {
   showPlayer = false;
   selectedVideoUrl?: SafeResourceUrl;
   currentVideo?: VideoInterface;
+
+    // Defaults
+    defaultHeroImage = '/assets/images/parcy.jpg';
+    currentHeroImage = this.defaultHeroImage;
+
+    // This function is triggered by the shared component
+    updateHeroBackground(imageUrl: string) {
+      // If child sends an empty string, go back to default
+      this.currentHeroImage = imageUrl ? imageUrl : this.defaultHeroImage;
+    }
 
     constructor(
     private tourService: TourService,

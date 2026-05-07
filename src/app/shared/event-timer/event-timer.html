@@ -1,0 +1,50 @@
+<div class="compact-glass-timer animate-fade-in" *ngIf="nextEvent">
+  <div class="p-3">
+    
+    <!-- Top Row: Status & Date -->
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <div class="live-indicator">
+        <span class="pulse-dot"></span>
+        <span class="status-text">Upcoming Live</span>
+      </div>
+      <div class="date-badge">
+        {{ nextEvent.month }} {{ nextEvent.day }}
+      </div>
+    </div>
+
+    <!-- Venue Title -->
+    <h6 class="event-title text-truncate" [title]="nextEvent.venue">
+      {{ nextEvent.venue }}
+    </h6>
+
+    <!-- The Countdown: Reggae One Numbers -->
+    <div class="timer-grid mb-3">
+      <div class="timer-slot">
+        <span class="t-val">{{ days }}</span>
+        <span class="t-lbl">Days</span>
+      </div>
+      <div class="t-sep">:</div>
+      <div class="timer-slot">
+        <span class="t-val">{{ hours }}</span>
+        <span class="t-lbl">Hrs</span>
+      </div>
+      <div class="t-sep">:</div>
+      <div class="timer-slot">
+        <span class="t-val">{{ minutes }}</span>
+        <span class="t-lbl">Min</span>
+      </div>
+      <div class="t-sep">:</div>
+      <div class="timer-slot">
+        <span class="t-val highlight">{{ seconds }}</span>
+        <span class="t-lbl">Sec</span>
+      </div>
+    </div>
+
+    <!-- Action Button -->
+    <button class="btn btn-timer-action w-100 rounded-pill fw-bold" 
+            [routerLink]="['/details', nextEvent.id]">
+      {{ nextEvent.isFree ? 'Secure Free Seat' : 'Get Tickets' }}
+      <i class="bi bi-arrow-right-short ms-1"></i>
+    </button>
+  </div>
+</div>
